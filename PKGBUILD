@@ -76,7 +76,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 
 md5sums=('071d49ff4e020d58c04f9f3f76d3b594'
          '2824fda27f71a076b0a52245f2c3d6b0'
-         '01f80467623b8a94ddb51d7fce658c42'
+         'f148105b40c77d8322bb7136d1baf8d8'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
@@ -207,8 +207,8 @@ prepare() {
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
-  make menuconfig
-  cp ./.config "${srcdir}/config"
+ # make menuconfig
+ # cp ./.config "${srcdir}/config"
 
 }
 
