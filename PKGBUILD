@@ -6,7 +6,7 @@ _srcname=linux-5.15
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
 pkgver=5.15.4
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -177,7 +177,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/0038-Revert-builddeb-Enable-rootless-builds.patch"
   patch -Np1 -i "${srcdir}/0039-packaging-5.x-with-postinstall-scripts.patch"
   patch -Np1 -i "${srcdir}/0040-builddeb-update-dtb-file-for-SD-images.patch"
-  patch -Np1 -i "${srcdir}/0041-Add-text_offset.patch"
+  # patch -Np1 -i "${srcdir}/0041-Add-text_offset.patch"
   patch -Np1 -i "${srcdir}/0042-VIMs-add-gpiomem-support.patch"
   patch -Np1 -i "${srcdir}/0043-add-device-model-to-proc-cpuinfo.patch"
   patch -Np1 -i "${srcdir}/0045-arm64-dts-VIM3-3L-add-serial-aliases.patch"
