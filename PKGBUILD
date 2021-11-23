@@ -68,6 +68,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'0061-arm64-dts-meson-add-spdif-out-to-khadas-vim2.patch'
 	'0062-arm64-dts-meson-sm1-add-spdifin-spdifout-nodes.patch'
 	'0063-arm64-dts-meson-khadas-vim3-remake-simple-sound-for-.patch'
+	'0064-arm64-dts-meson-add-initial-Beelink-GT1-Ultimate-dev.patch'
+    '0065-add-ugoos-device.patch'
 	'v1-0001-PCI-add-PCIe-Max-Read-Request-Size.patch'
 	'v1-0002-PCI-DWC-meson-setup-512-PCIe-Max-Read-Request-Siz.patch'
 	'v2-0001-arm64-dts-rockchip-remove-mmc-hs400-enhanced-stro.patch'
@@ -76,7 +78,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 
 md5sums=('071d49ff4e020d58c04f9f3f76d3b594'
          '2824fda27f71a076b0a52245f2c3d6b0'
-         'f148105b40c77d8322bb7136d1baf8d8'
+         'd0b8bd7b74163f9ae992e052a51abb85'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
@@ -130,6 +132,8 @@ md5sums=('071d49ff4e020d58c04f9f3f76d3b594'
          'df7b3db97e601766d8280a685e12ccc4'
          '2e16f477544723d4709f1f7b117e6ae9'
          'da1ae27bf11081c277a8b504f5033297'
+         'c41b101c033ac487c15298bc5a9e95cd'
+         '1b92d7617e60d3c525a4b18ab4351185'
          '00e5055ecbdd583cab132d885f11a290'
          '607269265296f7391f02d75e9076033e'
          '8ea473f5a69781f37b0415ff3a728832'
@@ -193,6 +197,8 @@ prepare() {
   patch -Np1 -i "${srcdir}/0061-arm64-dts-meson-add-spdif-out-to-khadas-vim2.patch"
   patch -Np1 -i "${srcdir}/0062-arm64-dts-meson-sm1-add-spdifin-spdifout-nodes.patch"
   patch -Np1 -i "${srcdir}/0063-arm64-dts-meson-khadas-vim3-remake-simple-sound-for-.patch"
+  patch -Np1 -i "${srcdir}/0064-arm64-dts-meson-add-initial-Beelink-GT1-Ultimate-dev.patch"
+  patch -Np1 -i "${srcdir}/0065-add-ugoos-device.patch"
   patch -Np1 -i "${srcdir}/v1-0001-PCI-add-PCIe-Max-Read-Request-Size.patch"
   patch -Np1 -i "${srcdir}/v1-0002-PCI-DWC-meson-setup-512-PCIe-Max-Read-Request-Siz.patch"
   patch -Np1 -i "${srcdir}/v2-0001-arm64-dts-rockchip-remove-mmc-hs400-enhanced-stro.patch"
