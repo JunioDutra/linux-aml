@@ -70,6 +70,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'0063-arm64-dts-meson-khadas-vim3-remake-simple-sound-for-.patch'
 	'0064-arm64-dts-meson-add-initial-Beelink-GT1-Ultimate-dev.patch'
     '0065-add-ugoos-device.patch'
+    '0066-drm-meson-add-YUV422-output-support.patch'
 	'v1-0001-PCI-add-PCIe-Max-Read-Request-Size.patch'
 	'v1-0002-PCI-DWC-meson-setup-512-PCIe-Max-Read-Request-Siz.patch'
 	'v2-0001-arm64-dts-rockchip-remove-mmc-hs400-enhanced-stro.patch'
@@ -199,6 +200,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/0063-arm64-dts-meson-khadas-vim3-remake-simple-sound-for-.patch"
   patch -Np1 -i "${srcdir}/0064-arm64-dts-meson-add-initial-Beelink-GT1-Ultimate-dev.patch"
   patch -Np1 -i "${srcdir}/0065-add-ugoos-device.patch"
+  patch -Np1 -i "${srcdir}/0066-drm-meson-add-YUV422-output-support.patch"
   patch -Np1 -i "${srcdir}/v1-0001-PCI-add-PCIe-Max-Read-Request-Size.patch"
   patch -Np1 -i "${srcdir}/v1-0002-PCI-DWC-meson-setup-512-PCIe-Max-Read-Request-Siz.patch"
   patch -Np1 -i "${srcdir}/v2-0001-arm64-dts-rockchip-remove-mmc-hs400-enhanced-stro.patch"
