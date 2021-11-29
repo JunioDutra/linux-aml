@@ -5,8 +5,8 @@ pkgbase=linux-khadas
 _srcname=linux-5.15
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.15.4
-pkgrel=3
+pkgver=5.15.5
+pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -78,8 +78,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'v5-0001-dtb-enable-creation-of-__symbols__-node.patch')
 
 md5sums=('071d49ff4e020d58c04f9f3f76d3b594'
-         '2824fda27f71a076b0a52245f2c3d6b0'
-         'd0b8bd7b74163f9ae992e052a51abb85'
+         '532a136dcabc2a416afeaedc4108209f'
+         '68aa0ca37720c7e1b5171e9bbe050ad6'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
@@ -216,8 +216,8 @@ prepare() {
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
- # make menuconfig
- # cp ./.config "${srcdir}/config"
+  #make menuconfig
+  #cp ./.config "${srcdir}/config"
 
 }
 
