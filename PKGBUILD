@@ -5,7 +5,7 @@ pkgbase=linux-khadas
 _srcname=linux-5.15
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.15.6
+pkgver=5.15.7
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -78,7 +78,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'v5-0001-dtb-enable-creation-of-__symbols__-node.patch')
 
 md5sums=('071d49ff4e020d58c04f9f3f76d3b594'
-         'a41ce0931f89959fb2457f8a54e5c811'
+         'e9f7de256af2461d2585d12b5d3e5fff'
          '68aa0ca37720c7e1b5171e9bbe050ad6'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
