@@ -75,7 +75,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'v1-0002-PCI-DWC-meson-setup-512-PCIe-Max-Read-Request-Siz.patch'
 	'v2-0001-arm64-dts-rockchip-remove-mmc-hs400-enhanced-stro.patch'
 	'v4-0001-of-add-Overlay-ConfigFS-interface.patch'
-	'v5-0001-dtb-enable-creation-of-__symbols__-node.patch')
+	'v5-0001-dtb-enable-creation-of-__symbols__-node.patch'
+	'832f662660986d9707e5768541a72fb03b85d099.patch')
 
 md5sums=('071d49ff4e020d58c04f9f3f76d3b594'
          'e9f7de256af2461d2585d12b5d3e5fff'
@@ -140,7 +141,8 @@ md5sums=('071d49ff4e020d58c04f9f3f76d3b594'
          '607269265296f7391f02d75e9076033e'
          '8ea473f5a69781f37b0415ff3a728832'
          'fcaa04a94040f734f8fd2347f1d28d3a'
-         '16101539fa994e9ac2adb51ff92776ae')
+         '16101539fa994e9ac2adb51ff92776ae'
+         '8e5c7790d65a87606d2d34295d5a0a65')
 
 prepare() {
   cd ${_srcname}
@@ -207,7 +209,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/v2-0001-arm64-dts-rockchip-remove-mmc-hs400-enhanced-stro.patch"
   patch -Np1 -i "${srcdir}/v4-0001-of-add-Overlay-ConfigFS-interface.patch"
   patch -Np1 -i "${srcdir}/v5-0001-dtb-enable-creation-of-__symbols__-node.patch"
-
+  patch -Np1 -i "${srcdir}/832f662660986d9707e5768541a72fb03b85d099.patch" 
   
   cat "${srcdir}/config" > ./.config
 
