@@ -5,7 +5,7 @@ pkgbase=linux-khadas
 _srcname=linux-5.15
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.15.10
+pkgver=5.15.11
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -79,7 +79,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'832f662660986d9707e5768541a72fb03b85d099.patch')
 
 md5sums=('071d49ff4e020d58c04f9f3f76d3b594'
-         'c876f09e70a498dc43c8706c18b56f76'
+         '00c7ed091b7fdee8a3116bf0d21c969a'
          '68aa0ca37720c7e1b5171e9bbe050ad6'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
