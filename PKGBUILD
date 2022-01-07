@@ -5,7 +5,7 @@ pkgbase=linux-khadas
 _srcname=linux-5.15
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.15.11
+pkgver=5.15.13
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -79,7 +79,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'832f662660986d9707e5768541a72fb03b85d099.patch')
 
 md5sums=('071d49ff4e020d58c04f9f3f76d3b594'
-         '00c7ed091b7fdee8a3116bf0d21c969a'
+         '930441d97e2edcd67e5fe2f05dec645d'
          '68aa0ca37720c7e1b5171e9bbe050ad6'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
@@ -206,7 +206,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/0066-drm-meson-add-YUV422-output-support.patch"
   patch -Np1 -i "${srcdir}/v1-0001-PCI-add-PCIe-Max-Read-Request-Size.patch"
   patch -Np1 -i "${srcdir}/v1-0002-PCI-DWC-meson-setup-512-PCIe-Max-Read-Request-Siz.patch"
-  patch -Np1 -i "${srcdir}/v2-0001-arm64-dts-rockchip-remove-mmc-hs400-enhanced-stro.patch"
+  #patch -Np1 -i "${srcdir}/v2-0001-arm64-dts-rockchip-remove-mmc-hs400-enhanced-stro.patch" #Already applied on 5.15.11
   patch -Np1 -i "${srcdir}/v4-0001-of-add-Overlay-ConfigFS-interface.patch"
   patch -Np1 -i "${srcdir}/v5-0001-dtb-enable-creation-of-__symbols__-node.patch"
   patch -Np1 -i "${srcdir}/832f662660986d9707e5768541a72fb03b85d099.patch" 
