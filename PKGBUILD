@@ -6,7 +6,7 @@ _srcname=linux-5.15
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
 pkgver=5.15.13
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -164,11 +164,11 @@ prepare() {
   patch -Np1 -i "${srcdir}/0016-WIP-drivers-meson-vdec-improve-mmu-and-fbc-handling-.patch"
   patch -Np1 -i "${srcdir}/0017-WIP-drivers-meson-vdec-add-hevc-decode-codec.patch"
   patch -Np1 -i "${srcdir}/0018-WIP-drivers-meson-vdec-add-handling-to-HEVC-decoder-.patch"
-  patch -Np1 -i "${srcdir}/0019-WIP-ASoC-hdmi-codec-reorder-channel-allocation-list.patch"
+  #patch -Np1 -i "${srcdir}/0019-WIP-ASoC-hdmi-codec-reorder-channel-allocation-list.patch"
   patch -Np1 -i "${srcdir}/0020-WIP-ASoC-meson-aiu-encoder-spdif-implement-the-.mute.patch"
   patch -Np1 -i "${srcdir}/0021-WIP-ASoC-meson-aiu-encoder-i2s-implement-the-.mute_s.patch"
-  patch -Np1 -i "${srcdir}/0022-WIP-ALSA-pcm-fix-ELD-constraints-for-some-compressed.patch"
-  patch -Np1 -i "${srcdir}/0023-WIP-ALSA-pcm-ignore-formats-not-supported-by-kodi-in.patch"
+  #patch -Np1 -i "${srcdir}/0022-WIP-ALSA-pcm-fix-ELD-constraints-for-some-compressed.patch"
+  #patch -Np1 -i "${srcdir}/0023-WIP-ALSA-pcm-ignore-formats-not-supported-by-kodi-in.patch"
   patch -Np1 -i "${srcdir}/0024-media-rc-add-common-keymap-for-Dreambox-RC10-and-RC2.patch"
   patch -Np1 -i "${srcdir}/0025-arm64-dts-meson-add-common-SM1-ac2xx-dtsi.patch"
   patch -Np1 -i "${srcdir}/0026-WIP-arm64-dts-meson-add-common-hdmi-hdmi-spdif-dtsi-.patch"
@@ -176,18 +176,18 @@ prepare() {
   patch -Np1 -i "${srcdir}/0028-WIP-arm64-dts-meson-add-audio-playback-to-khadas-vim.patch"
   patch -Np1 -i "${srcdir}/0029-rockchip_khadas_edge_add_missed_spiflash.patch"
   patch -Np1 -i "${srcdir}/0030-rockchip_khadas_edge_add_ir_recv.patch"
-  patch -Np1 -i "${srcdir}/0031-arm64-dts-VIM3-VIM3L-fix-memory-size-for-vendor-u-bo.patch"
+  #patch -Np1 -i "${srcdir}/0031-arm64-dts-VIM3-VIM3L-fix-memory-size-for-vendor-u-bo.patch"
   patch -Np1 -i "${srcdir}/0032-arm64-dts-VIM2-fix-broken-ethernet-interface-up-down.patch"
   patch -Np1 -i "${srcdir}/0033-VIM3-hack-for-PCIe.patch"
   patch -Np1 -i "${srcdir}/0034-ETH-setup-mac-address-from-command-line.patch"
   patch -Np1 -i "${srcdir}/0035-VIM3-Change-fan-auto-control-temp-to-50-C.patch"
-  patch -Np1 -i "${srcdir}/0037-Revert-builddeb-Fix-rootless-build-in-setuid-setgid-.patch"
-  patch -Np1 -i "${srcdir}/0038-Revert-builddeb-Enable-rootless-builds.patch"
-  patch -Np1 -i "${srcdir}/0039-packaging-5.x-with-postinstall-scripts.patch"
-  patch -Np1 -i "${srcdir}/0040-builddeb-update-dtb-file-for-SD-images.patch"
-  # patch -Np1 -i "${srcdir}/0041-Add-text_offset.patch"
+  #patch -Np1 -i "${srcdir}/0037-Revert-builddeb-Fix-rootless-build-in-setuid-setgid-.patch"
+  #patch -Np1 -i "${srcdir}/0038-Revert-builddeb-Enable-rootless-builds.patch"
+  #patch -Np1 -i "${srcdir}/0039-packaging-5.x-with-postinstall-scripts.patch"
+  #patch -Np1 -i "${srcdir}/0040-builddeb-update-dtb-file-for-SD-images.patch"
+  #patch -Np1 -i "${srcdir}/0041-Add-text_offset.patch"
   patch -Np1 -i "${srcdir}/0042-VIMs-add-gpiomem-support.patch"
-  patch -Np1 -i "${srcdir}/0043-add-device-model-to-proc-cpuinfo.patch"
+  #patch -Np1 -i "${srcdir}/0043-add-device-model-to-proc-cpuinfo.patch"
   patch -Np1 -i "${srcdir}/0045-arm64-dts-VIM3-3L-add-serial-aliases.patch"
   patch -Np1 -i "${srcdir}/0046-arm64-dts-VIM1-update-serial-aliases.patch"
   patch -Np1 -i "${srcdir}/0047-arm64-dts-VIM2-update-serial-aliases.patch"
@@ -195,21 +195,21 @@ prepare() {
   patch -Np1 -i "${srcdir}/0049-VIM1-2-add-i2c-aliases.patch"
   patch -Np1 -i "${srcdir}/0051-arm64-dts-VIM3L-add-npu-node.patch"
   patch -Np1 -i "${srcdir}/0052-arm64-dts-VIM3-add-npu-node.patch"
-  patch -Np1 -i "${srcdir}/0058-watchdog-meson_gxbb_wdt-remove-stop_on_reboot.patch"
-  patch -Np1 -i "${srcdir}/0059-arm64-dts-meson-sm1-khadas-vim3l-use-one-sound-node-.patch"
+  #patch -Np1 -i "${srcdir}/0058-watchdog-meson_gxbb_wdt-remove-stop_on_reboot.patch"
+  #patch -Np1 -i "${srcdir}/0059-arm64-dts-meson-sm1-khadas-vim3l-use-one-sound-node-.patch"
   patch -Np1 -i "${srcdir}/0060-arm64-dts-meson-add-spdif-out-to-khadas-vim.patch"
   patch -Np1 -i "${srcdir}/0061-arm64-dts-meson-add-spdif-out-to-khadas-vim2.patch"
   patch -Np1 -i "${srcdir}/0062-arm64-dts-meson-sm1-add-spdifin-spdifout-nodes.patch"
-  patch -Np1 -i "${srcdir}/0063-arm64-dts-meson-khadas-vim3-remake-simple-sound-for-.patch"
+  #patch -Np1 -i "${srcdir}/0063-arm64-dts-meson-khadas-vim3-remake-simple-sound-for-.patch"
   patch -Np1 -i "${srcdir}/0064-arm64-dts-meson-add-initial-Beelink-GT1-Ultimate-dev.patch"
   patch -Np1 -i "${srcdir}/0065-add-ugoos-device.patch"
   patch -Np1 -i "${srcdir}/0066-drm-meson-add-YUV422-output-support.patch"
   patch -Np1 -i "${srcdir}/v1-0001-PCI-add-PCIe-Max-Read-Request-Size.patch"
   patch -Np1 -i "${srcdir}/v1-0002-PCI-DWC-meson-setup-512-PCIe-Max-Read-Request-Siz.patch"
-  #patch -Np1 -i "${srcdir}/v2-0001-arm64-dts-rockchip-remove-mmc-hs400-enhanced-stro.patch" #Already applied on 5.15.11
+  #patch -Np1 -i "${srcdir}/v2-0001-arm64-dts-rockchip-remove-mmc-hs400-enhanced-stro.patch" 	#Already applied on 5.15.11
   patch -Np1 -i "${srcdir}/v4-0001-of-add-Overlay-ConfigFS-interface.patch"
-  patch -Np1 -i "${srcdir}/v5-0001-dtb-enable-creation-of-__symbols__-node.patch"
-  patch -Np1 -i "${srcdir}/832f662660986d9707e5768541a72fb03b85d099.patch" 
+  #patch -Np1 -i "${srcdir}/v5-0001-dtb-enable-creation-of-__symbols__-node.patch"
+  #patch -Np1 -i "${srcdir}/832f662660986d9707e5768541a72fb03b85d099.patch" 			#Test MMC Patch
   
   cat "${srcdir}/config" > ./.config
 
