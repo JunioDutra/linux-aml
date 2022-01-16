@@ -160,10 +160,10 @@ prepare() {
   patch -Np1 -i "${srcdir}/0007-HACK-arm64-dts-meson-add-rtc-vrtc-aliases-to-Khadas-.patch"
   patch -Np1 -i "${srcdir}/0008-HACK-of-partial-revert-of-fdt.c-changes.patch"
   patch -Np1 -i "${srcdir}/0014-WIP-mmc-meson-gx-mmc-set-core-clock-phase-to-270-deg.patch"
-  patch -Np1 -i "${srcdir}/0015-WIP-media-meson-vdec-remove-redundant-if-statement.patch"
-  patch -Np1 -i "${srcdir}/0016-WIP-drivers-meson-vdec-improve-mmu-and-fbc-handling-.patch"
-  patch -Np1 -i "${srcdir}/0017-WIP-drivers-meson-vdec-add-hevc-decode-codec.patch"
-  patch -Np1 -i "${srcdir}/0018-WIP-drivers-meson-vdec-add-handling-to-HEVC-decoder-.patch"
+  #patch -Np1 -i "${srcdir}/0015-WIP-media-meson-vdec-remove-redundant-if-statement.patch"
+  #patch -Np1 -i "${srcdir}/0016-WIP-drivers-meson-vdec-improve-mmu-and-fbc-handling-.patch"
+  #patch -Np1 -i "${srcdir}/0017-WIP-drivers-meson-vdec-add-hevc-decode-codec.patch"
+  #patch -Np1 -i "${srcdir}/0018-WIP-drivers-meson-vdec-add-handling-to-HEVC-decoder-.patch"
   #patch -Np1 -i "${srcdir}/0019-WIP-ASoC-hdmi-codec-reorder-channel-allocation-list.patch"
   patch -Np1 -i "${srcdir}/0020-WIP-ASoC-meson-aiu-encoder-spdif-implement-the-.mute.patch"
   patch -Np1 -i "${srcdir}/0021-WIP-ASoC-meson-aiu-encoder-i2s-implement-the-.mute_s.patch"
@@ -207,7 +207,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/v1-0001-PCI-add-PCIe-Max-Read-Request-Size.patch"
   patch -Np1 -i "${srcdir}/v1-0002-PCI-DWC-meson-setup-512-PCIe-Max-Read-Request-Siz.patch"
   #patch -Np1 -i "${srcdir}/v2-0001-arm64-dts-rockchip-remove-mmc-hs400-enhanced-stro.patch" 	#Already applied on 5.15.11
-  patch -Np1 -i "${srcdir}/v4-0001-of-add-Overlay-ConfigFS-interface.patch"
+  #patch -Np1 -i "${srcdir}/v4-0001-of-add-Overlay-ConfigFS-interface.patch"
   #patch -Np1 -i "${srcdir}/v5-0001-dtb-enable-creation-of-__symbols__-node.patch"
   #patch -Np1 -i "${srcdir}/832f662660986d9707e5768541a72fb03b85d099.patch" 			#Test MMC Patch
   
