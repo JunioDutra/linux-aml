@@ -218,8 +218,8 @@ prepare() {
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
-  make menuconfig
-  cp ./.config "${srcdir}/config"
+  #make menuconfig
+  #cp ./.config "${srcdir}/config"
 
 }
 
