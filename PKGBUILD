@@ -80,7 +80,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 
 md5sums=('071d49ff4e020d58c04f9f3f76d3b594'
          '930441d97e2edcd67e5fe2f05dec645d'
-         '0633282a03ac9a5ca27db0bd71666db1'
+         '055d42c60891fea30c6dbb11e78b7bff'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
