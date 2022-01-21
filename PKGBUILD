@@ -6,7 +6,7 @@ _srcname=linux-5.15
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
 pkgver=5.15.13
-pkgrel=4
+pkgrel=5
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -76,7 +76,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'v2-0001-arm64-dts-rockchip-remove-mmc-hs400-enhanced-stro.patch'
 	'v4-0001-of-add-Overlay-ConfigFS-interface.patch'
 	'v5-0001-dtb-enable-creation-of-__symbols__-node.patch'
-	'832f662660986d9707e5768541a72fb03b85d099.patch')
+	'832f662660986d9707e5768541a72fb03b85d099.patch'
+	'https://github.com/chewitt/linux/commit/1fbdab91b40f56691f97279cd2df7e9370b19033.patch')
 
 md5sums=('071d49ff4e020d58c04f9f3f76d3b594'
          '930441d97e2edcd67e5fe2f05dec645d'
@@ -142,7 +143,8 @@ md5sums=('071d49ff4e020d58c04f9f3f76d3b594'
          '8ea473f5a69781f37b0415ff3a728832'
          'fcaa04a94040f734f8fd2347f1d28d3a'
          '16101539fa994e9ac2adb51ff92776ae'
-         '8e5c7790d65a87606d2d34295d5a0a65')
+         '8e5c7790d65a87606d2d34295d5a0a65'
+         'cda7f2ddb9ab20fc49559897a858a5a8')
 
 prepare() {
   cd ${_srcname}
@@ -210,7 +212,7 @@ prepare() {
   #patch -Np1 -i "${srcdir}/v4-0001-of-add-Overlay-ConfigFS-interface.patch"
   #patch -Np1 -i "${srcdir}/v5-0001-dtb-enable-creation-of-__symbols__-node.patch"
   #patch -Np1 -i "${srcdir}/832f662660986d9707e5768541a72fb03b85d099.patch" 			#Test MMC Patch
-  
+  patch -Np1 -i "${srcdir}/1fbdab91b40f56691f97279cd2df7e9370b19033.patch"			#Fix Kernel Panic on BeelinkG12B Devices 
   cat "${srcdir}/config" > ./.config
 
   # add pkgrel to extraversion
