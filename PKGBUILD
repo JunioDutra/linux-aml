@@ -2,11 +2,11 @@
 # Maintainer: Furkan Kardame <furkan@fkardame.com>
 
 pkgbase=linux-khadas
-_srcname=linux-5.15
+_srcname=linux-5.16
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.15.13
-pkgrel=5
+pkgver=5.16.2
+pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -69,8 +69,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'0062-arm64-dts-meson-sm1-add-spdifin-spdifout-nodes.patch'
 	'0063-arm64-dts-meson-khadas-vim3-remake-simple-sound-for-.patch'
 	'0064-arm64-dts-meson-add-initial-Beelink-GT1-Ultimate-dev.patch'
-    '0065-add-ugoos-device.patch'
-    '0066-drm-meson-add-YUV422-output-support.patch'
+    	'0065-add-ugoos-device.patch'
+    	'0066-drm-meson-add-YUV422-output-support.patch'
 	'v1-0001-PCI-add-PCIe-Max-Read-Request-Size.patch'
 	'v1-0002-PCI-DWC-meson-setup-512-PCIe-Max-Read-Request-Siz.patch'
 	'v2-0001-arm64-dts-rockchip-remove-mmc-hs400-enhanced-stro.patch'
@@ -79,9 +79,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'832f662660986d9707e5768541a72fb03b85d099.patch'
 	'https://github.com/chewitt/linux/commit/1fbdab91b40f56691f97279cd2df7e9370b19033.patch')
 
-md5sums=('071d49ff4e020d58c04f9f3f76d3b594'
-         '930441d97e2edcd67e5fe2f05dec645d'
-         '3201a7b0f36c32f368e28362f1ccea4b'
+md5sums=('e6680ce7c989a3efe58b51e3f3f0bf93'
+         '3ce3933c25c9a589fb072b81894a8f7b'
+         'f13cb9a195c21cf00d84956e0125e96f'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
@@ -135,7 +135,7 @@ md5sums=('071d49ff4e020d58c04f9f3f76d3b594'
          'df7b3db97e601766d8280a685e12ccc4'
          '2e16f477544723d4709f1f7b117e6ae9'
          'da1ae27bf11081c277a8b504f5033297'
-         'c41b101c033ac487c15298bc5a9e95cd'
+         'fcafc359d76ffbf0e28d6bb990a51fc6'
          '1b92d7617e60d3c525a4b18ab4351185'
          '469417b64e6a2bf65bd74c6d9cad2040'
          '00e5055ecbdd583cab132d885f11a290'
