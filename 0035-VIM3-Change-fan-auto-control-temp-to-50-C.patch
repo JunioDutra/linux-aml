@@ -21,7 +21,7 @@ index d80e89b7c0e4..c8ef7d348e5b 100644
  	trips {
  		cpu_active: cpu-active {
 -			temperature = <80000>; /* millicelsius */
-+			temperature = <50000>; /* millicelsius */
++			temperature = <65000>; /* millicelsius */
  			hysteresis = <2000>; /* millicelsius */
  			type = "active";
  		};
