@@ -81,7 +81,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 
 md5sums=('e6680ce7c989a3efe58b51e3f3f0bf93'
          '3ce3933c25c9a589fb072b81894a8f7b'
-         'f13cb9a195c21cf00d84956e0125e96f'
+         'c9bab6f98c8ed07f864edfc65935a2dc'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
@@ -144,7 +144,7 @@ md5sums=('e6680ce7c989a3efe58b51e3f3f0bf93'
          'fcaa04a94040f734f8fd2347f1d28d3a'
          '16101539fa994e9ac2adb51ff92776ae'
          '8e5c7790d65a87606d2d34295d5a0a65'
-         'cda7f2ddb9ab20fc49559897a858a5a8')
+         '9f5532ce87ad82fe87ab0181ae3209a5')
 
 prepare() {
   cd ${_srcname}
