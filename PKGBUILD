@@ -5,8 +5,8 @@ pkgbase=linux-khadas
 _srcname=linux-5.16
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.16.2
-pkgrel=2
+pkgver=5.16.7
+pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -77,10 +77,11 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'v4-0001-of-add-Overlay-ConfigFS-interface.patch'
 	'v5-0001-dtb-enable-creation-of-__symbols__-node.patch'
 	'832f662660986d9707e5768541a72fb03b85d099.patch'
-	'https://github.com/chewitt/linux/commit/1fbdab91b40f56691f97279cd2df7e9370b19033.patch')
+	'https://github.com/chewitt/linux/commit/1fbdab91b40f56691f97279cd2df7e9370b19033.patch'
+	'https://github.com/radxa/kernel/pull/10/commits/590bcc24c47e8c87e3cd1df8ba1702777e736c9b.patch')
 
 md5sums=('e6680ce7c989a3efe58b51e3f3f0bf93'
-         '3ce3933c25c9a589fb072b81894a8f7b'
+         '58ed014f8501484f3a21668c85f81327'
          'c9bab6f98c8ed07f864edfc65935a2dc'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
@@ -144,7 +145,8 @@ md5sums=('e6680ce7c989a3efe58b51e3f3f0bf93'
          'fcaa04a94040f734f8fd2347f1d28d3a'
          '16101539fa994e9ac2adb51ff92776ae'
          '8e5c7790d65a87606d2d34295d5a0a65'
-         '9f5532ce87ad82fe87ab0181ae3209a5')
+         'cda7f2ddb9ab20fc49559897a858a5a8'
+         'd3ac794d63ec9e6913dddd85ee9daa77')
 
 prepare() {
   cd ${_srcname}
@@ -160,7 +162,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/0005-HACK-arm64-meson-add-Amlogic-Meson-GX-PM-Suspend.patch"
   patch -Np1 -i "${srcdir}/0006-HACK-arm64-dts-meson-add-support-for-GX-PM-and-Virtu.patch"
   patch -Np1 -i "${srcdir}/0007-HACK-arm64-dts-meson-add-rtc-vrtc-aliases-to-Khadas-.patch"
-  patch -Np1 -i "${srcdir}/0008-HACK-of-partial-revert-of-fdt.c-changes.patch"
+  #patch -Np1 -i "${srcdir}/0008-HACK-of-partial-revert-of-fdt.c-changes.patch"
   patch -Np1 -i "${srcdir}/0014-WIP-mmc-meson-gx-mmc-set-core-clock-phase-to-270-deg.patch"
   #patch -Np1 -i "${srcdir}/0015-WIP-media-meson-vdec-remove-redundant-if-statement.patch"
   #patch -Np1 -i "${srcdir}/0016-WIP-drivers-meson-vdec-improve-mmu-and-fbc-handling-.patch"
@@ -212,7 +214,8 @@ prepare() {
   #patch -Np1 -i "${srcdir}/v4-0001-of-add-Overlay-ConfigFS-interface.patch"
   #patch -Np1 -i "${srcdir}/v5-0001-dtb-enable-creation-of-__symbols__-node.patch"
   #patch -Np1 -i "${srcdir}/832f662660986d9707e5768541a72fb03b85d099.patch" 			#Test MMC Patch
-  patch -Np1 -i "${srcdir}/1fbdab91b40f56691f97279cd2df7e9370b19033.patch"			#Fix Kernel Panic on BeelinkG12B Devices 
+  patch -Np1 -i "${srcdir}/1fbdab91b40f56691f97279cd2df7e9370b19033.patch"			#Fix Kernel Panic on BeelinkG12B Devices
+  patch -Np1 -i "${srcdir}/590bcc24c47e8c87e3cd1df8ba1702777e736c9b.patch"			 #Add Radxa Zero2 
   cat "${srcdir}/config" > ./.config
 
   # add pkgrel to extraversion
