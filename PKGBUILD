@@ -5,7 +5,7 @@ pkgbase=linux-khadas
 _srcname=linux-5.16
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.16.7
+pkgver=5.16.9
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -81,8 +81,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'https://github.com/radxa/kernel/pull/10/commits/590bcc24c47e8c87e3cd1df8ba1702777e736c9b.patch')
 
 md5sums=('e6680ce7c989a3efe58b51e3f3f0bf93'
-         '58ed014f8501484f3a21668c85f81327'
-         'c9bab6f98c8ed07f864edfc65935a2dc'
+         '3fb7b37e41cdd4fe0b60a963da06a577'
+         '90fb30a921017994fa7e2f508036e471'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
@@ -157,10 +157,10 @@ prepare() {
   # Khadas patches
   patch -Np1 -i "${srcdir}/0001-HACK-set-meson-gx-cma-pool-to-896MB.patch"
   patch -Np1 -i "${srcdir}/0002-HACK-set-meson-g12-cma-pool-to-896MB.patch"
-  patch -Np1 -i "${srcdir}/0003-HACK-arm64-fix-Kodi-sysinfo-CPU-information.patch"
-  patch -Np1 -i "${srcdir}/0004-HACK-arm64-dts-meson-gx-add-ATF-BL32-reserved-memory.patch"
-  patch -Np1 -i "${srcdir}/0005-HACK-arm64-meson-add-Amlogic-Meson-GX-PM-Suspend.patch"
-  patch -Np1 -i "${srcdir}/0006-HACK-arm64-dts-meson-add-support-for-GX-PM-and-Virtu.patch"
+  #patch -Np1 -i "${srcdir}/0003-HACK-arm64-fix-Kodi-sysinfo-CPU-information.patch"
+  #patch -Np1 -i "${srcdir}/0004-HACK-arm64-dts-meson-gx-add-ATF-BL32-reserved-memory.patch"
+  #patch -Np1 -i "${srcdir}/0005-HACK-arm64-meson-add-Amlogic-Meson-GX-PM-Suspend.patch"
+  #patch -Np1 -i "${srcdir}/0006-HACK-arm64-dts-meson-add-support-for-GX-PM-and-Virtu.patch"
   patch -Np1 -i "${srcdir}/0007-HACK-arm64-dts-meson-add-rtc-vrtc-aliases-to-Khadas-.patch"
   #patch -Np1 -i "${srcdir}/0008-HACK-of-partial-revert-of-fdt.c-changes.patch"
   patch -Np1 -i "${srcdir}/0014-WIP-mmc-meson-gx-mmc-set-core-clock-phase-to-270-deg.patch"
@@ -169,15 +169,15 @@ prepare() {
   #patch -Np1 -i "${srcdir}/0017-WIP-drivers-meson-vdec-add-hevc-decode-codec.patch"
   #patch -Np1 -i "${srcdir}/0018-WIP-drivers-meson-vdec-add-handling-to-HEVC-decoder-.patch"
   #patch -Np1 -i "${srcdir}/0019-WIP-ASoC-hdmi-codec-reorder-channel-allocation-list.patch"
-  patch -Np1 -i "${srcdir}/0020-WIP-ASoC-meson-aiu-encoder-spdif-implement-the-.mute.patch"
-  patch -Np1 -i "${srcdir}/0021-WIP-ASoC-meson-aiu-encoder-i2s-implement-the-.mute_s.patch"
+  #patch -Np1 -i "${srcdir}/0020-WIP-ASoC-meson-aiu-encoder-spdif-implement-the-.mute.patch"
+  #patch -Np1 -i "${srcdir}/0021-WIP-ASoC-meson-aiu-encoder-i2s-implement-the-.mute_s.patch"
   #patch -Np1 -i "${srcdir}/0022-WIP-ALSA-pcm-fix-ELD-constraints-for-some-compressed.patch"
   #patch -Np1 -i "${srcdir}/0023-WIP-ALSA-pcm-ignore-formats-not-supported-by-kodi-in.patch"
   patch -Np1 -i "${srcdir}/0024-media-rc-add-common-keymap-for-Dreambox-RC10-and-RC2.patch"
   patch -Np1 -i "${srcdir}/0025-arm64-dts-meson-add-common-SM1-ac2xx-dtsi.patch"
-  patch -Np1 -i "${srcdir}/0026-WIP-arm64-dts-meson-add-common-hdmi-hdmi-spdif-dtsi-.patch"
-  patch -Np1 -i "${srcdir}/0027-WIP-arm64-dts-meson-add-common-hdmi-hdmi-spdif-dtsi-.patch"
-  patch -Np1 -i "${srcdir}/0028-WIP-arm64-dts-meson-add-audio-playback-to-khadas-vim.patch"
+  #patch -Np1 -i "${srcdir}/0026-WIP-arm64-dts-meson-add-common-hdmi-hdmi-spdif-dtsi-.patch"
+  #patch -Np1 -i "${srcdir}/0027-WIP-arm64-dts-meson-add-common-hdmi-hdmi-spdif-dtsi-.patch"
+  #patch -Np1 -i "${srcdir}/0028-WIP-arm64-dts-meson-add-audio-playback-to-khadas-vim.patch"
   patch -Np1 -i "${srcdir}/0029-rockchip_khadas_edge_add_missed_spiflash.patch"
   patch -Np1 -i "${srcdir}/0030-rockchip_khadas_edge_add_ir_recv.patch"
   #patch -Np1 -i "${srcdir}/0031-arm64-dts-VIM3-VIM3L-fix-memory-size-for-vendor-u-bo.patch"
