@@ -161,7 +161,7 @@ prepare() {
   #patch -Np1 -i "${srcdir}/0004-HACK-arm64-dts-meson-gx-add-ATF-BL32-reserved-memory.patch"
   #patch -Np1 -i "${srcdir}/0005-HACK-arm64-meson-add-Amlogic-Meson-GX-PM-Suspend.patch"
   #patch -Np1 -i "${srcdir}/0006-HACK-arm64-dts-meson-add-support-for-GX-PM-and-Virtu.patch"
-  patch -Np1 -i "${srcdir}/0007-HACK-arm64-dts-meson-add-rtc-vrtc-aliases-to-Khadas-.patch"
+  #patch -Np1 -i "${srcdir}/0007-HACK-arm64-dts-meson-add-rtc-vrtc-aliases-to-Khadas-.patch"
   #patch -Np1 -i "${srcdir}/0008-HACK-of-partial-revert-of-fdt.c-changes.patch"
   patch -Np1 -i "${srcdir}/0014-WIP-mmc-meson-gx-mmc-set-core-clock-phase-to-270-deg.patch"
   #patch -Np1 -i "${srcdir}/0015-WIP-media-meson-vdec-remove-redundant-if-statement.patch"
