@@ -5,8 +5,8 @@ pkgbase=linux-khadas
 _srcname=linux-5.16
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.16.9
-pkgrel=3
+pkgver=5.16.11
+pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -81,8 +81,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'https://github.com/radxa/kernel/pull/10/commits/590bcc24c47e8c87e3cd1df8ba1702777e736c9b.patch')
 
 md5sums=('e6680ce7c989a3efe58b51e3f3f0bf93'
-         '3fb7b37e41cdd4fe0b60a963da06a577'
-         '90fb30a921017994fa7e2f508036e471'
+         'ca7b9d187c82cff5e70a239d3f1e59f7'
+         '110088528df9fbe14f6c9505b22fd58f'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
@@ -158,16 +158,16 @@ prepare() {
   patch -Np1 -i "${srcdir}/0001-HACK-set-meson-gx-cma-pool-to-896MB.patch"
   patch -Np1 -i "${srcdir}/0002-HACK-set-meson-g12-cma-pool-to-896MB.patch"
   #patch -Np1 -i "${srcdir}/0003-HACK-arm64-fix-Kodi-sysinfo-CPU-information.patch"
-  #patch -Np1 -i "${srcdir}/0004-HACK-arm64-dts-meson-gx-add-ATF-BL32-reserved-memory.patch"
+  patch -Np1 -i "${srcdir}/0004-HACK-arm64-dts-meson-gx-add-ATF-BL32-reserved-memory.patch"
   #patch -Np1 -i "${srcdir}/0005-HACK-arm64-meson-add-Amlogic-Meson-GX-PM-Suspend.patch"
   #patch -Np1 -i "${srcdir}/0006-HACK-arm64-dts-meson-add-support-for-GX-PM-and-Virtu.patch"
   #patch -Np1 -i "${srcdir}/0007-HACK-arm64-dts-meson-add-rtc-vrtc-aliases-to-Khadas-.patch"
   #patch -Np1 -i "${srcdir}/0008-HACK-of-partial-revert-of-fdt.c-changes.patch"
   patch -Np1 -i "${srcdir}/0014-WIP-mmc-meson-gx-mmc-set-core-clock-phase-to-270-deg.patch"
-  #patch -Np1 -i "${srcdir}/0015-WIP-media-meson-vdec-remove-redundant-if-statement.patch"
-  #patch -Np1 -i "${srcdir}/0016-WIP-drivers-meson-vdec-improve-mmu-and-fbc-handling-.patch"
-  #patch -Np1 -i "${srcdir}/0017-WIP-drivers-meson-vdec-add-hevc-decode-codec.patch"
-  #patch -Np1 -i "${srcdir}/0018-WIP-drivers-meson-vdec-add-handling-to-HEVC-decoder-.patch"
+  patch -Np1 -i "${srcdir}/0015-WIP-media-meson-vdec-remove-redundant-if-statement.patch"
+  patch -Np1 -i "${srcdir}/0016-WIP-drivers-meson-vdec-improve-mmu-and-fbc-handling-.patch"
+  patch -Np1 -i "${srcdir}/0017-WIP-drivers-meson-vdec-add-hevc-decode-codec.patch"
+  patch -Np1 -i "${srcdir}/0018-WIP-drivers-meson-vdec-add-handling-to-HEVC-decoder-.patch"
   #patch -Np1 -i "${srcdir}/0019-WIP-ASoC-hdmi-codec-reorder-channel-allocation-list.patch"
   #patch -Np1 -i "${srcdir}/0020-WIP-ASoC-meson-aiu-encoder-spdif-implement-the-.mute.patch"
   #patch -Np1 -i "${srcdir}/0021-WIP-ASoC-meson-aiu-encoder-i2s-implement-the-.mute_s.patch"
@@ -180,7 +180,7 @@ prepare() {
   #patch -Np1 -i "${srcdir}/0028-WIP-arm64-dts-meson-add-audio-playback-to-khadas-vim.patch"
   patch -Np1 -i "${srcdir}/0029-rockchip_khadas_edge_add_missed_spiflash.patch"
   patch -Np1 -i "${srcdir}/0030-rockchip_khadas_edge_add_ir_recv.patch"
-  #patch -Np1 -i "${srcdir}/0031-arm64-dts-VIM3-VIM3L-fix-memory-size-for-vendor-u-bo.patch"
+  patch -Np1 -i "${srcdir}/0031-arm64-dts-VIM3-VIM3L-fix-memory-size-for-vendor-u-bo.patch"
   patch -Np1 -i "${srcdir}/0032-arm64-dts-VIM2-fix-broken-ethernet-interface-up-down.patch"
   patch -Np1 -i "${srcdir}/0033-VIM3-hack-for-PCIe.patch"
   patch -Np1 -i "${srcdir}/0034-ETH-setup-mac-address-from-command-line.patch"
@@ -199,7 +199,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/0049-VIM1-2-add-i2c-aliases.patch"
   patch -Np1 -i "${srcdir}/0051-arm64-dts-VIM3L-add-npu-node.patch"
   patch -Np1 -i "${srcdir}/0052-arm64-dts-VIM3-add-npu-node.patch"
-  #patch -Np1 -i "${srcdir}/0058-watchdog-meson_gxbb_wdt-remove-stop_on_reboot.patch"
+  patch -Np1 -i "${srcdir}/0058-watchdog-meson_gxbb_wdt-remove-stop_on_reboot.patch"
   #patch -Np1 -i "${srcdir}/0059-arm64-dts-meson-sm1-khadas-vim3l-use-one-sound-node-.patch"
   patch -Np1 -i "${srcdir}/0060-arm64-dts-meson-add-spdif-out-to-khadas-vim.patch"
   patch -Np1 -i "${srcdir}/0061-arm64-dts-meson-add-spdif-out-to-khadas-vim2.patch"
