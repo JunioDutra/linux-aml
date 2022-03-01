@@ -1,0 +1,80 @@
+From 1fbdab91b40f56691f97279cd2df7e9370b19033 Mon Sep 17 00:00:00 2001
+From: Christian Hewitt <christianshewitt@gmail.com>
+Date: Fri, 21 Jan 2022 11:31:29 +0000
+Subject: [PATCH] WIP: arm64: dts: meson: add BL32 reserved memory region to
+ Beelink G12B devices
+
+Add an additional reserved memory region for the BL32 trusted firmware
+shipping in Beelink g12b devices. This fixes a long running issue with
+boxes booting from Vendor u-boot where the board wedges during boot or
+soon after due to the (un)reserved region being overwritten.
+
+Fixes 93db2ce05204 ("arm64: dts: meson: add initial Beelink GS-King-X device-tree")
+Fixes c5522ff9c729 ("arm64: dts: meson-g12b-gtking: add initial device-tree")
+Fixes 0b928e4e412b ("arm64: dts: meson-g12b-gtking-pro: add initial device-tree")
+
+Signed-off-by: Christian Hewitt <christianshewitt@gmail.com> (GS-King-X)
+Tested-by: Furkan Kardame <furkan@fkardame.com> (GT-King/GT-King Pro)
+---
+ arch/arm64/boot/dts/amlogic/meson-g12b-gsking-x.dts   | 8 ++++++++
+ arch/arm64/boot/dts/amlogic/meson-g12b-gtking-pro.dts | 8 ++++++++
+ arch/arm64/boot/dts/amlogic/meson-g12b-gtking.dts     | 8 ++++++++
+ 3 files changed, 24 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/amlogic/meson-g12b-gsking-x.dts b/arch/arm64/boot/dts/amlogic/meson-g12b-gsking-x.dts
+index 6c7bfacbad78ea..c6178cbe3a9b82 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-g12b-gsking-x.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-g12b-gsking-x.dts
+@@ -20,6 +20,14 @@
+ 		rtc1 = &vrtc;
+ 	};
+ 
++	reserved-memory {
++		/* 32 MiB reserved for ARM Trusted Firmware (BL32) */
++		secmon_reserved_bl32: secmon@5300000 {
++			reg = <0x0 0x05300000 0x0 0x2000000>;
++			no-map;
++		};
++	};
++
+ 	gpio-keys-polled {
+ 		compatible = "gpio-keys-polled";
+ 		#address-cells = <1>;
+diff --git a/arch/arm64/boot/dts/amlogic/meson-g12b-gtking-pro.dts b/arch/arm64/boot/dts/amlogic/meson-g12b-gtking-pro.dts
+index 707daf92787bae..7782fc9fc12b82 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-g12b-gtking-pro.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-g12b-gtking-pro.dts
+@@ -19,6 +19,14 @@
+ 		rtc1 = &vrtc;
+ 	};
+ 
++	reserved-memory {
++		/* 32 MiB reserved for ARM Trusted Firmware (BL32) */
++		secmon_reserved_bl32: secmon@5300000 {
++			reg = <0x0 0x05300000 0x0 0x2000000>;
++			no-map;
++		};
++	};
++
+ 	gpio-keys-polled {
+ 		compatible = "gpio-keys-polled";
+ 		#address-cells = <1>;
+diff --git a/arch/arm64/boot/dts/amlogic/meson-g12b-gtking.dts b/arch/arm64/boot/dts/amlogic/meson-g12b-gtking.dts
+index 5d96c14490504c..58a300d6b5457e 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-g12b-gtking.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-g12b-gtking.dts
+@@ -19,6 +19,14 @@
+ 		rtc1 = &vrtc;
+ 	};
+ 
++	reserved-memory {
++		/* 32 MiB reserved for ARM Trusted Firmware (BL32) */
++		secmon_reserved_bl32: secmon@5300000 {
++			reg = <0x0 0x05300000 0x0 0x2000000>;
++			no-map;
++		};
++	};
++
+ 	spdif_dit: audio-codec-1 {
+ 		#sound-dai-cells = <0>;
+ 		compatible = "linux,spdif-dit";

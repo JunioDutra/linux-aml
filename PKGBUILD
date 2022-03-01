@@ -77,7 +77,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'v4-0001-of-add-Overlay-ConfigFS-interface.patch'
 	'v5-0001-dtb-enable-creation-of-__symbols__-node.patch'
 	'832f662660986d9707e5768541a72fb03b85d099.patch'
-	'https://github.com/chewitt/linux/commit/1fbdab91b40f56691f97279cd2df7e9370b19033.patch'
+	'1fbdab91b40f56691f97279cd2df7e9370b19033.patch'
 	'https://github.com/radxa/kernel/pull/10/commits/590bcc24c47e8c87e3cd1df8ba1702777e736c9b.patch')
 
 md5sums=('e6680ce7c989a3efe58b51e3f3f0bf93'
