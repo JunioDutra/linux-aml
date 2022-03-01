@@ -158,7 +158,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/0001-HACK-set-meson-gx-cma-pool-to-896MB.patch"
   patch -Np1 -i "${srcdir}/0002-HACK-set-meson-g12-cma-pool-to-896MB.patch"
   #patch -Np1 -i "${srcdir}/0003-HACK-arm64-fix-Kodi-sysinfo-CPU-information.patch"
-  patch -Np1 -i "${srcdir}/0004-HACK-arm64-dts-meson-gx-add-ATF-BL32-reserved-memory.patch"
+  #patch -Np1 -i "${srcdir}/0004-HACK-arm64-dts-meson-gx-add-ATF-BL32-reserved-memory.patch"	#Creates Duplicate nodes
   #patch -Np1 -i "${srcdir}/0005-HACK-arm64-meson-add-Amlogic-Meson-GX-PM-Suspend.patch"
   #patch -Np1 -i "${srcdir}/0006-HACK-arm64-dts-meson-add-support-for-GX-PM-and-Virtu.patch"
   #patch -Np1 -i "${srcdir}/0007-HACK-arm64-dts-meson-add-rtc-vrtc-aliases-to-Khadas-.patch"
