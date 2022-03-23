@@ -5,7 +5,7 @@ pkgbase=linux-khadas
 _srcname=linux-5.16
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.16.11
+pkgver=5.16.17
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -81,7 +81,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'https://github.com/radxa/kernel/pull/10/commits/590bcc24c47e8c87e3cd1df8ba1702777e736c9b.patch')
 
 md5sums=('e6680ce7c989a3efe58b51e3f3f0bf93'
-         'ca7b9d187c82cff5e70a239d3f1e59f7'
+         '85279ee710804ffd61a1d601148111d3'
          '110088528df9fbe14f6c9505b22fd58f'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
