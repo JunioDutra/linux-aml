@@ -71,6 +71,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'0064-arm64-dts-meson-add-initial-Beelink-GT1-Ultimate-dev.patch'
     	'0065-add-ugoos-device.patch'
     	'0066-drm-meson-add-YUV422-output-support.patch'
+	'0067-drm-meson-encoder-add-YUV422-output-support.patch'
 	'v1-0001-PCI-add-PCIe-Max-Read-Request-Size.patch'
 	'v1-0002-PCI-DWC-meson-setup-512-PCIe-Max-Read-Request-Siz.patch'
 	'v2-0001-arm64-dts-rockchip-remove-mmc-hs400-enhanced-stro.patch'
@@ -139,6 +140,7 @@ md5sums=('07321a70a48d062cebd0358132f11771'
          'fcafc359d76ffbf0e28d6bb990a51fc6'
          '1b92d7617e60d3c525a4b18ab4351185'
          '469417b64e6a2bf65bd74c6d9cad2040'
+         '47ebd261e31fe881abafee88c9d33767'
          '00e5055ecbdd583cab132d885f11a290'
          '607269265296f7391f02d75e9076033e'
          '8ea473f5a69781f37b0415ff3a728832'
@@ -207,7 +209,7 @@ prepare() {
   #patch -Np1 -i "${srcdir}/0063-arm64-dts-meson-khadas-vim3-remake-simple-sound-for-.patch"
   patch -Np1 -i "${srcdir}/0064-arm64-dts-meson-add-initial-Beelink-GT1-Ultimate-dev.patch"
   patch -Np1 -i "${srcdir}/0065-add-ugoos-device.patch"
-  #patch -Np1 -i "${srcdir}/0066-drm-meson-add-YUV422-output-support.patch"
+  patch -Np1 -i "${srcdir}/0067-drm-meson-encoder-add-YUV422-output-support.patch"
   patch -Np1 -i "${srcdir}/v1-0001-PCI-add-PCIe-Max-Read-Request-Size.patch"
   patch -Np1 -i "${srcdir}/v1-0002-PCI-DWC-meson-setup-512-PCIe-Max-Read-Request-Siz.patch"
   #patch -Np1 -i "${srcdir}/v2-0001-arm64-dts-rockchip-remove-mmc-hs400-enhanced-stro.patch" 	#Already applied on 5.15.11
