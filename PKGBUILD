@@ -2,10 +2,10 @@
 # Maintainer: Furkan Kardame <furkan@fkardame.com>
 
 pkgbase=linux-khadas
-_srcname=linux-5.16
+_srcname=linux-5.17
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.16.17
+pkgver=5.17.1
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -80,9 +80,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'1fbdab91b40f56691f97279cd2df7e9370b19033.patch'
 	'https://github.com/radxa/kernel/pull/10/commits/590bcc24c47e8c87e3cd1df8ba1702777e736c9b.patch')
 
-md5sums=('e6680ce7c989a3efe58b51e3f3f0bf93'
-         '85279ee710804ffd61a1d601148111d3'
-         '3b264463437c9414d671ecf037452bf0'
+md5sums=('07321a70a48d062cebd0358132f11771'
+         '5a015eeaa9a3bf5bea84290f54ccf48d'
+         '497a059ef37a752abacc604af8b57e62'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
@@ -199,7 +199,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/0049-VIM1-2-add-i2c-aliases.patch"
   patch -Np1 -i "${srcdir}/0051-arm64-dts-VIM3L-add-npu-node.patch"
   patch -Np1 -i "${srcdir}/0052-arm64-dts-VIM3-add-npu-node.patch"
-  patch -Np1 -i "${srcdir}/0058-watchdog-meson_gxbb_wdt-remove-stop_on_reboot.patch"
+  #patch -Np1 -i "${srcdir}/0058-watchdog-meson_gxbb_wdt-remove-stop_on_reboot.patch"
   #patch -Np1 -i "${srcdir}/0059-arm64-dts-meson-sm1-khadas-vim3l-use-one-sound-node-.patch"
   patch -Np1 -i "${srcdir}/0060-arm64-dts-meson-add-spdif-out-to-khadas-vim.patch"
   patch -Np1 -i "${srcdir}/0061-arm64-dts-meson-add-spdif-out-to-khadas-vim2.patch"
@@ -207,7 +207,7 @@ prepare() {
   #patch -Np1 -i "${srcdir}/0063-arm64-dts-meson-khadas-vim3-remake-simple-sound-for-.patch"
   patch -Np1 -i "${srcdir}/0064-arm64-dts-meson-add-initial-Beelink-GT1-Ultimate-dev.patch"
   patch -Np1 -i "${srcdir}/0065-add-ugoos-device.patch"
-  patch -Np1 -i "${srcdir}/0066-drm-meson-add-YUV422-output-support.patch"
+  #patch -Np1 -i "${srcdir}/0066-drm-meson-add-YUV422-output-support.patch"
   patch -Np1 -i "${srcdir}/v1-0001-PCI-add-PCIe-Max-Read-Request-Size.patch"
   patch -Np1 -i "${srcdir}/v1-0002-PCI-DWC-meson-setup-512-PCIe-Max-Read-Request-Siz.patch"
   #patch -Np1 -i "${srcdir}/v2-0001-arm64-dts-rockchip-remove-mmc-hs400-enhanced-stro.patch" 	#Already applied on 5.15.11
