@@ -5,7 +5,7 @@ pkgbase=linux-khadas
 _srcname=linux-5.17
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.17.1
+pkgver=5.17.5
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -82,8 +82,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'https://github.com/radxa/kernel/pull/10/commits/590bcc24c47e8c87e3cd1df8ba1702777e736c9b.patch')
 
 md5sums=('07321a70a48d062cebd0358132f11771'
-         '5a015eeaa9a3bf5bea84290f54ccf48d'
-         '497a059ef37a752abacc604af8b57e62'
+         'cdcffeee90d436b93ecb621d3ce940d8'
+         '54b8b1f05e1ea1b33635d9724c6d148c'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
@@ -225,8 +225,8 @@ prepare() {
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
-  #make menuconfig
-  #cp ./.config "${srcdir}/config"
+  # make menuconfig
+ # cp ./.config "${srcdir}/config"
 
 }
 
