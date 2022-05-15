@@ -5,7 +5,7 @@ pkgbase=linux-khadas
 _srcname=linux-5.17
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.17.6
+pkgver=5.17.8
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -78,11 +78,12 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'v4-0001-of-add-Overlay-ConfigFS-interface.patch'
 	'v5-0001-dtb-enable-creation-of-__symbols__-node.patch'
 	'832f662660986d9707e5768541a72fb03b85d099.patch'
-	'1fbdab91b40f56691f97279cd2df7e9370b19033.patch'
-	'https://github.com/radxa/kernel/pull/10/commits/590bcc24c47e8c87e3cd1df8ba1702777e736c9b.patch')
+	'https://github.com/radxa/kernel/pull/10/commits/590bcc24c47e8c87e3cd1df8ba1702777e736c9b.patch'
+	'https://github.com/spikerguy/linux/commit/a2eef8635c0a9f3d831bcddb3368117981599e70.patch'
+	'https://github.com/spikerguy/linux/commit/b5b067c1c6ad34c5d15729d2147781f6f14549ad.patch')
 
 md5sums=('07321a70a48d062cebd0358132f11771'
-         '7ce7d9536f1b70b8190f2675cd03ee5b'
+         '303f9d0330446e900894da7b0ad424ae'
          '54b8b1f05e1ea1b33635d9724c6d148c'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
@@ -147,8 +148,9 @@ md5sums=('07321a70a48d062cebd0358132f11771'
          'fcaa04a94040f734f8fd2347f1d28d3a'
          '16101539fa994e9ac2adb51ff92776ae'
          '8e5c7790d65a87606d2d34295d5a0a65'
-         'cda7f2ddb9ab20fc49559897a858a5a8'
-         'd3ac794d63ec9e6913dddd85ee9daa77')
+         'd3ac794d63ec9e6913dddd85ee9daa77'
+         '5c50db3f0888d80ecc2be4351879b1f6'
+         'e4d32fa4336b46524597a3bbc715d272')
 
 prepare() {
   cd ${_srcname}
@@ -214,9 +216,8 @@ prepare() {
   patch -Np1 -i "${srcdir}/v1-0002-PCI-DWC-meson-setup-512-PCIe-Max-Read-Request-Siz.patch"
   #patch -Np1 -i "${srcdir}/v2-0001-arm64-dts-rockchip-remove-mmc-hs400-enhanced-stro.patch" 	#Already applied on 5.15.11
   #patch -Np1 -i "${srcdir}/v4-0001-of-add-Overlay-ConfigFS-interface.patch"
-  #patch -Np1 -i "${srcdir}/v5-0001-dtb-enable-creation-of-__symbols__-node.patch"
-  #patch -Np1 -i "${srcdir}/832f662660986d9707e5768541a72fb03b85d099.patch" 			#Test MMC Patch
-  patch -Np1 -i "${srcdir}/1fbdab91b40f56691f97279cd2df7e9370b19033.patch"			#Fix Kernel Panic on BeelinkG12B Devices
+  patch -Np1 -i "${srcdir}/a2eef8635c0a9f3d831bcddb3368117981599e70.patch"			#Add GPIO Fan control GS King X
+  patch -Np1 -i "${srcdir}/b5b067c1c6ad34c5d15729d2147781f6f14549ad.patch" 			#GPIO Fan to only use single cooling map
   patch -Np1 -i "${srcdir}/590bcc24c47e8c87e3cd1df8ba1702777e736c9b.patch"			 #Add Radxa Zero2 
   cat "${srcdir}/config" > ./.config
 
