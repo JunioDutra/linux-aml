@@ -2,10 +2,10 @@
 # Maintainer: Furkan Kardame <furkan@fkardame.com>
 
 pkgbase=linux-khadas
-_srcname=linux-5.17
+_srcname=linux-5.18
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.17.8
+pkgver=5.18.1
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -78,13 +78,16 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'v4-0001-of-add-Overlay-ConfigFS-interface.patch'
 	'v5-0001-dtb-enable-creation-of-__symbols__-node.patch'
 	'832f662660986d9707e5768541a72fb03b85d099.patch'
-	'https://github.com/radxa/kernel/pull/10/commits/590bcc24c47e8c87e3cd1df8ba1702777e736c9b.patch'
 	'https://github.com/spikerguy/linux/commit/a2eef8635c0a9f3d831bcddb3368117981599e70.patch'
-	'https://github.com/spikerguy/linux/commit/b5b067c1c6ad34c5d15729d2147781f6f14549ad.patch')
+	'https://github.com/spikerguy/linux/commit/b5b067c1c6ad34c5d15729d2147781f6f14549ad.patch'
+	'https://raw.githubusercontent.com/radxa-repo/lbuild/main/forks/mainline/upstream/0001-arm64-dts-meson-radxa-zero-add-support-for-the-usb-t.patch'
+	'https://raw.githubusercontent.com/radxa-repo/lbuild/main/forks/mainline/upstream/0002-pinctrl-meson-Add-several-missing-pinmux-for-pwm-fun.patch'
+	'https://raw.githubusercontent.com/radxa-repo/lbuild/main/forks/mainline/upstream/0003-dt-bindings-arm-amlogic-add-support-for-Radxa-Zero2.patch'
+	'https://raw.githubusercontent.com/radxa-repo/lbuild/main/forks/mainline/upstream/0004-arm64-dts-meson-add-support-for-Radxa-Zero2.patch')
 
-md5sums=('07321a70a48d062cebd0358132f11771'
-         '303f9d0330446e900894da7b0ad424ae'
-         '54b8b1f05e1ea1b33635d9724c6d148c'
+md5sums=('58e80452e2d8e1993cd7ec95e697ab5a'
+         '4d3c0c51927b2bb0de4caa5d64a6dd4c'
+         'b09f0cb3116f44c1a7b45857caedb31e'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
@@ -99,7 +102,7 @@ md5sums=('07321a70a48d062cebd0358132f11771'
          'c8444872bf7670e72b1028265ea71185'
          '78abeb86982c3a3aeb147d29dcc3ca83'
          'bc513edabed56f544b4b78413e490422'
-         '5541e2a34812cab3f7fbf047aeeb11fc'
+         '693332564e06ec09086faf1a2e1b4f63'
          '4e1546d1aba4b982d1683fc004df836e'
          'b76c3b61ae29b2d5de6611b97d8c8a9b'
          '6df6ab67320910f6cbc734eaae5be3e0'
@@ -148,9 +151,12 @@ md5sums=('07321a70a48d062cebd0358132f11771'
          'fcaa04a94040f734f8fd2347f1d28d3a'
          '16101539fa994e9ac2adb51ff92776ae'
          '8e5c7790d65a87606d2d34295d5a0a65'
-         'd3ac794d63ec9e6913dddd85ee9daa77'
          '5c50db3f0888d80ecc2be4351879b1f6'
-         'e4d32fa4336b46524597a3bbc715d272')
+         'e4d32fa4336b46524597a3bbc715d272'
+         '9799998aa9b72fae2eb55e92d840dad5'
+         '2a971540beded13ca4c9bc0123ca563b'
+         'b5f364a62760483df0af20c7bf6ddb0d'
+         'f79e375da3f033c1dcfb3034d541a5da')
 
 prepare() {
   cd ${_srcname}
@@ -178,7 +184,7 @@ prepare() {
   #patch -Np1 -i "${srcdir}/0022-WIP-ALSA-pcm-fix-ELD-constraints-for-some-compressed.patch"
   #patch -Np1 -i "${srcdir}/0023-WIP-ALSA-pcm-ignore-formats-not-supported-by-kodi-in.patch"
   patch -Np1 -i "${srcdir}/0024-media-rc-add-common-keymap-for-Dreambox-RC10-and-RC2.patch"
-  patch -Np1 -i "${srcdir}/0025-arm64-dts-meson-add-common-SM1-ac2xx-dtsi.patch"
+  #patch -Np1 -i "${srcdir}/0025-arm64-dts-meson-add-common-SM1-ac2xx-dtsi.patch"			# Applied in 5.18.1
   #patch -Np1 -i "${srcdir}/0026-WIP-arm64-dts-meson-add-common-hdmi-hdmi-spdif-dtsi-.patch"
   #patch -Np1 -i "${srcdir}/0027-WIP-arm64-dts-meson-add-common-hdmi-hdmi-spdif-dtsi-.patch"
   #patch -Np1 -i "${srcdir}/0028-WIP-arm64-dts-meson-add-audio-playback-to-khadas-vim.patch"
@@ -218,7 +224,11 @@ prepare() {
   #patch -Np1 -i "${srcdir}/v4-0001-of-add-Overlay-ConfigFS-interface.patch"
   patch -Np1 -i "${srcdir}/a2eef8635c0a9f3d831bcddb3368117981599e70.patch"			#Add GPIO Fan control GS King X
   patch -Np1 -i "${srcdir}/b5b067c1c6ad34c5d15729d2147781f6f14549ad.patch" 			#GPIO Fan to only use single cooling map
-  patch -Np1 -i "${srcdir}/590bcc24c47e8c87e3cd1df8ba1702777e736c9b.patch"			 #Add Radxa Zero2 
+  patch -Np1 -i "${srcdir}/0001-arm64-dts-meson-radxa-zero-add-support-for-the-usb-t.patch"	# USB-C Support for Zero
+  patch -Np1 -i "${srcdir}/0002-pinctrl-meson-Add-several-missing-pinmux-for-pwm-fun.patch"	# Pinmux for Zero2
+  patch -Np1 -i "${srcdir}/0003-dt-bindings-arm-amlogic-add-support-for-Radxa-Zero2.patch"
+  patch -Np1 -i "${srcdir}/0004-arm64-dts-meson-add-support-for-Radxa-Zero2.patch"		# Add Zero2 support
+  
   cat "${srcdir}/config" > ./.config
 
   # add pkgrel to extraversion
@@ -226,8 +236,8 @@ prepare() {
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
-  # make menuconfig
- # cp ./.config "${srcdir}/config"
+  #make menuconfig
+  #cp ./.config "${srcdir}/config"
 
 }
 

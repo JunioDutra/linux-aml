@@ -1547,7 +1547,7 @@ index eabbebab2da2..3f463e0538fd 100644
  	}, {
  		.pixfmt = V4L2_PIX_FMT_H264,
  		.min_buffers = 2,
-@@ -103,6 +116,18 @@ static const struct amvdec_format vdec_formats_gxl[] = {
+@@ -116,6 +116,18 @@
  
  static const struct amvdec_format vdec_formats_gxm[] = {
  	{
@@ -1563,13 +1563,13 @@ index eabbebab2da2..3f463e0538fd 100644
 +		.flags = V4L2_FMT_FLAG_COMPRESSED |
 +			 V4L2_FMT_FLAG_DYN_RESOLUTION,
 +	}, {
- 		.pixfmt = V4L2_PIX_FMT_H264,
- 		.min_buffers = 2,
+ 		.pixfmt = V4L2_PIX_FMT_VP9,
+ 		.min_buffers = 16,
  		.max_buffers = 24,
-@@ -153,6 +178,18 @@ static const struct amvdec_format vdec_formats_g12a[] = {
- 		.flags = V4L2_FMT_FLAG_COMPRESSED |
- 			 V4L2_FMT_FLAG_DYN_RESOLUTION,
- 	}, {
+@@ -166,6 +178,18 @@
+ 
+ static const struct amvdec_format vdec_formats_g12a[] = {
+ 	{
 +		.pixfmt = V4L2_PIX_FMT_HEVC,
 +		.min_buffers = 4,
 +		.max_buffers = 24,
@@ -1582,9 +1582,10 @@ index eabbebab2da2..3f463e0538fd 100644
 +		.flags = V4L2_FMT_FLAG_COMPRESSED |
 +			 V4L2_FMT_FLAG_DYN_RESOLUTION,
 +	},{
- 		.pixfmt = V4L2_PIX_FMT_H264,
- 		.min_buffers = 2,
+ 		.pixfmt = V4L2_PIX_FMT_VP9,
+ 		.min_buffers = 16,
  		.max_buffers = 24,
+
 @@ -202,6 +239,18 @@ static const struct amvdec_format vdec_formats_sm1[] = {
  		.pixfmts_cap = { V4L2_PIX_FMT_NV12M, 0 },
  		.flags = V4L2_FMT_FLAG_COMPRESSED |
