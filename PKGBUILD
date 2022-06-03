@@ -213,7 +213,7 @@ prepare() {
   #patch -Np1 -i "${srcdir}/0059-arm64-dts-meson-sm1-khadas-vim3l-use-one-sound-node-.patch"
   patch -Np1 -i "${srcdir}/0060-arm64-dts-meson-add-spdif-out-to-khadas-vim.patch"
   patch -Np1 -i "${srcdir}/0061-arm64-dts-meson-add-spdif-out-to-khadas-vim2.patch"
-  patch -Np1 -i "${srcdir}/0062-arm64-dts-meson-sm1-add-spdifin-spdifout-nodes.patch"
+  #patch -Np1 -i "${srcdir}/0062-arm64-dts-meson-sm1-add-spdifin-spdifout-nodes.patch"
   #patch -Np1 -i "${srcdir}/0063-arm64-dts-meson-khadas-vim3-remake-simple-sound-for-.patch"
   patch -Np1 -i "${srcdir}/0064-arm64-dts-meson-add-initial-Beelink-GT1-Ultimate-dev.patch"
   patch -Np1 -i "${srcdir}/0065-add-ugoos-device.patch"
