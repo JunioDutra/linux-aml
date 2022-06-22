@@ -80,7 +80,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'832f662660986d9707e5768541a72fb03b85d099.patch'
 	'https://github.com/spikerguy/linux/commit/a2eef8635c0a9f3d831bcddb3368117981599e70.patch'
 	'https://github.com/spikerguy/linux/commit/b5b067c1c6ad34c5d15729d2147781f6f14549ad.patch'
-	'https://raw.githubusercontent.com/radxa-repo/lbuild/main/forks/mainline/upstream/0001-arm64-dts-meson-radxa-zero-add-support-for-the-usb-t.patch'
+	'0001-arm64-dts-meson-radxa-zero-add-support-for-the-usb-t.patch'
 	'https://raw.githubusercontent.com/radxa-repo/lbuild/main/forks/mainline/upstream/0002-pinctrl-meson-Add-several-missing-pinmux-for-pwm-fun.patch'
 	'https://raw.githubusercontent.com/radxa-repo/lbuild/main/forks/mainline/upstream/0003-dt-bindings-arm-amlogic-add-support-for-Radxa-Zero2.patch'
 	'https://raw.githubusercontent.com/radxa-repo/lbuild/main/forks/mainline/upstream/0004-arm64-dts-meson-add-support-for-Radxa-Zero2.patch')
