@@ -2,10 +2,10 @@
 # Maintainer: Furkan Kardame <furkan@fkardame.com>
 
 pkgbase=linux-khadas
-_srcname=linux-5.18
+_srcname=linux-5.19
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.18.14
+pkgver=5.19.0
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -13,7 +13,7 @@ license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'dtc')
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
+        #"http://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
         'config'
         'linux.preset'
         '60-linux.hook'
@@ -85,9 +85,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'0003-dt-bindings-arm-amlogic-add-support-for-Radxa-Zero2.patch'
 	'0004-arm64-dts-meson-add-support-for-Radxa-Zero2.patch')
 
-md5sums=('58e80452e2d8e1993cd7ec95e697ab5a'
-         '05dee8a9a2d04a0cde691b449114177b'
-         'b09f0cb3116f44c1a7b45857caedb31e'
+md5sums=('f91bfe133d2cb1692f705947282e123a'
+         'e2745a8998b4be38f9c664668966561a'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
@@ -162,7 +161,7 @@ prepare() {
   cd ${_srcname}
 
   # add upstream patch
-  patch -Np1 -i "${srcdir}/patch-${pkgver}"
+  #patch -Np1 -i "${srcdir}/patch-${pkgver}"
 
   # Khadas patches
   patch -Np1 -i "${srcdir}/0001-HACK-set-meson-gx-cma-pool-to-896MB.patch"
@@ -215,7 +214,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/0061-arm64-dts-meson-add-spdif-out-to-khadas-vim2.patch"
   #patch -Np1 -i "${srcdir}/0062-arm64-dts-meson-sm1-add-spdifin-spdifout-nodes.patch"
   #patch -Np1 -i "${srcdir}/0063-arm64-dts-meson-khadas-vim3-remake-simple-sound-for-.patch"
-  patch -Np1 -i "${srcdir}/0064-arm64-dts-meson-add-initial-Beelink-GT1-Ultimate-dev.patch"
+  #patch -Np1 -i "${srcdir}/0064-arm64-dts-meson-add-initial-Beelink-GT1-Ultimate-dev.patch"
   patch -Np1 -i "${srcdir}/0065-add-ugoos-device.patch"
   patch -Np1 -i "${srcdir}/0067-drm-meson-encoder-add-YUV422-output-support.patch"
   patch -Np1 -i "${srcdir}/v1-0001-PCI-add-PCIe-Max-Read-Request-Size.patch"
@@ -227,7 +226,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/0001-arm64-dts-meson-radxa-zero-add-support-for-the-usb-t.patch"	# USB-C Support for Zero
   patch -Np1 -i "${srcdir}/0002-pinctrl-meson-Add-several-missing-pinmux-for-pwm-fun.patch"	# Pinmux for Zero2
   patch -Np1 -i "${srcdir}/0003-dt-bindings-arm-amlogic-add-support-for-Radxa-Zero2.patch"
-  patch -Np1 -i "${srcdir}/0004-arm64-dts-meson-add-support-for-Radxa-Zero2.patch"		# Add Zero2 support
+  #patch -Np1 -i "${srcdir}/0004-arm64-dts-meson-add-support-for-Radxa-Zero2.patch"		# Add Zero2 support
   
   cat "${srcdir}/config" > ./.config
 
