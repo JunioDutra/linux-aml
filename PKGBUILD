@@ -6,7 +6,7 @@ _srcname=linux-5.19
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
 pkgver=5.19.0
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -140,7 +140,7 @@ md5sums=('f91bfe133d2cb1692f705947282e123a'
          'df7b3db97e601766d8280a685e12ccc4'
          '2e16f477544723d4709f1f7b117e6ae9'
          'da1ae27bf11081c277a8b504f5033297'
-         'fcafc359d76ffbf0e28d6bb990a51fc6'
+         '0910789410d92d3ae21996a66f45f041'
          '1b92d7617e60d3c525a4b18ab4351185'
          '469417b64e6a2bf65bd74c6d9cad2040'
          '47ebd261e31fe881abafee88c9d33767'
@@ -155,7 +155,7 @@ md5sums=('f91bfe133d2cb1692f705947282e123a'
          '9799998aa9b72fae2eb55e92d840dad5'
          '2a971540beded13ca4c9bc0123ca563b'
          'b5f364a62760483df0af20c7bf6ddb0d'
-         'f79e375da3f033c1dcfb3034d541a5da')
+         'd7f846f361d538be6ab2d7a2066774e2')
 
 prepare() {
   cd ${_srcname}
@@ -214,7 +214,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/0061-arm64-dts-meson-add-spdif-out-to-khadas-vim2.patch"
   #patch -Np1 -i "${srcdir}/0062-arm64-dts-meson-sm1-add-spdifin-spdifout-nodes.patch"
   #patch -Np1 -i "${srcdir}/0063-arm64-dts-meson-khadas-vim3-remake-simple-sound-for-.patch"
-  #patch -Np1 -i "${srcdir}/0064-arm64-dts-meson-add-initial-Beelink-GT1-Ultimate-dev.patch"
+  patch -Np1 -i "${srcdir}/0064-arm64-dts-meson-add-initial-Beelink-GT1-Ultimate-dev.patch"
   patch -Np1 -i "${srcdir}/0065-add-ugoos-device.patch"
   patch -Np1 -i "${srcdir}/0067-drm-meson-encoder-add-YUV422-output-support.patch"
   patch -Np1 -i "${srcdir}/v1-0001-PCI-add-PCIe-Max-Read-Request-Size.patch"
@@ -226,7 +226,7 @@ prepare() {
   patch -Np1 -i "${srcdir}/0001-arm64-dts-meson-radxa-zero-add-support-for-the-usb-t.patch"	# USB-C Support for Zero
   patch -Np1 -i "${srcdir}/0002-pinctrl-meson-Add-several-missing-pinmux-for-pwm-fun.patch"	# Pinmux for Zero2
   patch -Np1 -i "${srcdir}/0003-dt-bindings-arm-amlogic-add-support-for-Radxa-Zero2.patch"
-  #patch -Np1 -i "${srcdir}/0004-arm64-dts-meson-add-support-for-Radxa-Zero2.patch"		# Add Zero2 support
+  patch -Np1 -i "${srcdir}/0004-arm64-dts-meson-add-support-for-Radxa-Zero2.patch"		# Add Zero2 support
   
   cat "${srcdir}/config" > ./.config
 
