@@ -5,15 +5,15 @@ pkgbase=linux-khadas
 _srcname=linux-5.19
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.19.0
-pkgrel=2
+pkgver=5.19.1
+pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'dtc')
 options=('!strip')
 source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
-        #"http://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
+        "http://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
         'config'
         'linux.preset'
         '60-linux.hook'
@@ -86,6 +86,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'0004-arm64-dts-meson-add-support-for-Radxa-Zero2.patch')
 
 md5sums=('f91bfe133d2cb1692f705947282e123a'
+         'cf717367aed7d6de17438078b973200d'
          'e2745a8998b4be38f9c664668966561a'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
@@ -161,7 +162,7 @@ prepare() {
   cd ${_srcname}
 
   # add upstream patch
-  #patch -Np1 -i "${srcdir}/patch-${pkgver}"
+  patch -Np1 -i "${srcdir}/patch-${pkgver}"
 
   # Khadas patches
   patch -Np1 -i "${srcdir}/0001-HACK-set-meson-gx-cma-pool-to-896MB.patch"
