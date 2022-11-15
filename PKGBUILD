@@ -5,7 +5,7 @@ pkgbase=linux-khadas
 _srcname=linux-5.19
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.19.9
+pkgver=5.19.17
 pkgrel=1
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -86,7 +86,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	'0004-arm64-dts-meson-add-support-for-Radxa-Zero2.patch')
 
 md5sums=('f91bfe133d2cb1692f705947282e123a'
-         '111296cc47e7ac614455983bee14acb0'
+         '89a5211f788791b511c149374d68c48f'
          'e2745a8998b4be38f9c664668966561a'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
