@@ -1,233 +1,211 @@
 # Khadas Patched AArch64 multi-platform Kernel
 # Maintainer: Furkan Kardame <furkan@fkardame.com>
 
-pkgbase=linux-khadas
-_srcname=linux-5.19
+pkgbase=linux-aml
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=5.19.17
+pkgver=6.0.10
 pkgrel=1
+_srcname="linux-${pkgver/%.0/}"
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'dtc')
 options=('!strip')
-source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
+conflicts=('linux' 'linux-odroid')
+replaces=('linux-khadas')
+source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
+	#"http://www.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
         'config'
         'linux.preset'
         '60-linux.hook'
         '90-linux.hook'
-	'0001-HACK-set-meson-gx-cma-pool-to-896MB.patch'
-	'0002-HACK-set-meson-g12-cma-pool-to-896MB.patch'
-	'0003-HACK-arm64-fix-Kodi-sysinfo-CPU-information.patch'
-	'0004-HACK-arm64-dts-meson-gx-add-ATF-BL32-reserved-memory.patch'
-	'0005-HACK-arm64-meson-add-Amlogic-Meson-GX-PM-Suspend.patch'
-	'0006-HACK-arm64-dts-meson-add-support-for-GX-PM-and-Virtu.patch'
-	'0007-HACK-arm64-dts-meson-add-rtc-vrtc-aliases-to-Khadas-.patch'
-	'0008-HACK-of-partial-revert-of-fdt.c-changes.patch'
-	'0014-WIP-mmc-meson-gx-mmc-set-core-clock-phase-to-270-deg.patch'
-	'0015-WIP-media-meson-vdec-remove-redundant-if-statement.patch'
-	'0016-WIP-drivers-meson-vdec-improve-mmu-and-fbc-handling-.patch'
-	'0017-WIP-drivers-meson-vdec-add-hevc-decode-codec.patch'
-	'0018-WIP-drivers-meson-vdec-add-handling-to-HEVC-decoder-.patch'
-	'0019-WIP-ASoC-hdmi-codec-reorder-channel-allocation-list.patch'
-	'0020-WIP-ASoC-meson-aiu-encoder-spdif-implement-the-.mute.patch'
-	'0021-WIP-ASoC-meson-aiu-encoder-i2s-implement-the-.mute_s.patch'
-	'0022-WIP-ALSA-pcm-fix-ELD-constraints-for-some-compressed.patch'
-	'0023-WIP-ALSA-pcm-ignore-formats-not-supported-by-kodi-in.patch'
-	'0024-media-rc-add-common-keymap-for-Dreambox-RC10-and-RC2.patch'
-	'0025-arm64-dts-meson-add-common-SM1-ac2xx-dtsi.patch'
-	'0026-WIP-arm64-dts-meson-add-common-hdmi-hdmi-spdif-dtsi-.patch'
-	'0027-WIP-arm64-dts-meson-add-common-hdmi-hdmi-spdif-dtsi-.patch'
-	'0028-WIP-arm64-dts-meson-add-audio-playback-to-khadas-vim.patch'
-	'0029-rockchip_khadas_edge_add_missed_spiflash.patch'
-	'0030-rockchip_khadas_edge_add_ir_recv.patch'
-	'0031-arm64-dts-VIM3-VIM3L-fix-memory-size-for-vendor-u-bo.patch'
-	'0032-arm64-dts-VIM2-fix-broken-ethernet-interface-up-down.patch'
-	'0033-VIM3-hack-for-PCIe.patch'
-	'0034-ETH-setup-mac-address-from-command-line.patch'
-	'0035-VIM3-Change-fan-auto-control-temp-to-50-C.patch'
-	'0037-Revert-builddeb-Fix-rootless-build-in-setuid-setgid-.patch'
-	'0038-Revert-builddeb-Enable-rootless-builds.patch'
-	'0039-packaging-5.x-with-postinstall-scripts.patch'
-	'0040-builddeb-update-dtb-file-for-SD-images.patch'
-	'0041-Add-text_offset.patch'
-	'0042-VIMs-add-gpiomem-support.patch'
-	'0043-add-device-model-to-proc-cpuinfo.patch'
-	'0045-arm64-dts-VIM3-3L-add-serial-aliases.patch'
-	'0046-arm64-dts-VIM1-update-serial-aliases.patch'
-	'0047-arm64-dts-VIM2-update-serial-aliases.patch'
-	'0048-arm64-dts-VIM3-3L-add-i2c-aliases.patch'
-	'0049-VIM1-2-add-i2c-aliases.patch'
-	'0051-arm64-dts-VIM3L-add-npu-node.patch'
-	'0052-arm64-dts-VIM3-add-npu-node.patch'
-	'0058-watchdog-meson_gxbb_wdt-remove-stop_on_reboot.patch'
-	'0059-arm64-dts-meson-sm1-khadas-vim3l-use-one-sound-node-.patch'
-	'0060-arm64-dts-meson-add-spdif-out-to-khadas-vim.patch'
-	'0061-arm64-dts-meson-add-spdif-out-to-khadas-vim2.patch'
-	'0062-arm64-dts-meson-sm1-add-spdifin-spdifout-nodes.patch'
-	'0063-arm64-dts-meson-khadas-vim3-remake-simple-sound-for-.patch'
-	'0064-arm64-dts-meson-add-initial-Beelink-GT1-Ultimate-dev.patch'
-    	'0065-add-ugoos-device.patch'
-    	'0066-drm-meson-add-YUV422-output-support.patch'
-	'0067-drm-meson-encoder-add-YUV422-output-support.patch'
-	'v1-0001-PCI-add-PCIe-Max-Read-Request-Size.patch'
-	'v1-0002-PCI-DWC-meson-setup-512-PCIe-Max-Read-Request-Siz.patch'
-	'v2-0001-arm64-dts-rockchip-remove-mmc-hs400-enhanced-stro.patch'
-	'v4-0001-of-add-Overlay-ConfigFS-interface.patch'
-	'v5-0001-dtb-enable-creation-of-__symbols__-node.patch'
-	'832f662660986d9707e5768541a72fb03b85d099.patch'
-	'https://github.com/spikerguy/linux/commit/a2eef8635c0a9f3d831bcddb3368117981599e70.patch'
-	'https://github.com/spikerguy/linux/commit/b5b067c1c6ad34c5d15729d2147781f6f14549ad.patch'
-	'0001-arm64-dts-meson-radxa-zero-add-support-for-the-usb-t.patch'
-	'0002-pinctrl-meson-Add-several-missing-pinmux-for-pwm-fun.patch'
-	'0003-dt-bindings-arm-amlogic-add-support-for-Radxa-Zero2.patch'
-	'0004-arm64-dts-meson-add-support-for-Radxa-Zero2.patch')
+	'1001-LE-AML-0001-LOCAL-set-meson-gx-cma-pool-to-896MB.patch'
+	'1002-LE-AML-0002-LOCAL-set-meson-g12-cma-pool-to-896MB.patch'
+	'1003-LE-AML-0003-LOCAL-arm64-fix-Kodi-sysinfo-CPU-information.patch'
+	'1004-LE-AML-0004-LOCAL-arm64-meson-add-Amlogic-Meson-GX-PM-Suspend.patch'
+	'1005-LE-AML-0005-LOCAL-arm64-dts-meson-add-support-for-GX-PM-and-Virt.patch'
+	'1006-LE-AML-0006-LOCAL-arm64-dts-meson-add-rtc-vrtc-aliases-to-Khadas.patch'
+	'1007-LE-AML-0007-LOCAL-arm64-dts-meson-add-rtc-vrtc-aliases-to-Khadas.patch'
+	'1008-LE-AML-0008-LOCAL-arm64-dts-meson-add-rtc-vrtc-aliases-to-Minix-.patch'
+	'1009-LE-AML-0009-LOCAL-ALSA-Assign-internal-PCM-chmap-ELD-IEC958-kctl.patch'
+	'1010-LE-AML-0010-LOCAL-usb-hub-disable-autosuspend-for-Genesys-Logic-.patch'
+	'1011-LE-AML-0011-LOCAL-of-partial-revert-of-fdt.c-changes.patch'
+	'1013-LE-AML-0013-FROMGIT-6.1-dt-bindings-arm-amlogic-add-Beelink-GT1-.patch'
+	'1014-LE-AML-0014-FROMGIT-6.1-arm64-dts-meson-add-support-for-Beelink-.patch'
+	'1015-LE-AML-0015-FROMLIST-v2-arm64-dts-meson-make-dts-use-gpio-fan-ma.patch'
+	'1016-LE-AML-0016-FROMLIST-v1-mmc-meson-gx-fix-deferred-probing.patch'
+	'1017-LE-AML-0017-FROMLIST-v5-dt-bindings-vendor-prefixes-Add-Titan-Mi.patch'
+	'1018-LE-AML-0018-FROMLIST-v5-dt-bindings-auxdisplay-Add-Titan-Micro-E.patch'
+	'1019-LE-AML-0019-FROMLIST-v5-docs-ABI-document-tm1628-attribute-displ.patch'
+	'1020-LE-AML-0020-FROMLIST-v5-auxdisplay-add-support-for-Titanmec-TM16.patch'
+	'1021-LE-AML-0021-FROMLIST-v5-arm64-dts-meson-gxl-s905w-tx3-mini-add-s.patch'
+	'1022-LE-AML-0022-FROMLIST-v5-MAINTAINERS-Add-entry-for-tm1628-auxdisp.patch'
+	'1023-LE-AML-0023-FROMLIST-v1-drm-bridge-dw_hdmi-fix-preference-of-RGB.patch'
+	'1024-LE-AML-0024-WIP-ASoC-hdmi-codec-reorder-channel-allocation-list.patch'
+	'1025-LE-AML-0025-WIP-mmc-meson-gx-mmc-set-core-clock-phase-to-270-deg.patch'
+	'1026-LE-AML-0026-WIP-arm64-dts-meson-add-Broadcom-WiFi-to-P212-dtsi.patch'
+	'1027-LE-AML-0027-WIP-arm64-dts-meson-move-pwm_ef-node-in-P212-dtsi.patch'
+	'1028-LE-AML-0028-WIP-arm64-dts-meson-remove-WiFi-BT-nodes-from-Khadas.patch'
+	'1029-LE-AML-0029-WIP-arm64-dts-meson-set-p212-p23x-q20x-SDIO-to-100MH.patch'
+	'1030-LE-AML-0030-WIP-arm64-dts-meson-add-UHS-SDIO-capabilities-to-p21.patch'
+	'1031-LE-AML-0031-WIP-arm64-dts-meson-remove-SDIO-node-from-Khadas-VIM.patch'
+	'1032-LE-AML-0032-WIP-arm64-dts-meson-add-audio-playback-to-S905X-P212.patch'
+	'1033-LE-AML-0033-WIP-drivers-meson-vdec-remove-redundant-if-statement.patch'
+	'1034-LE-AML-0034-WIP-drivers-meson-vdec-improve-mmu-and-fbc-handling-.patch'
+	'1035-LE-AML-0035-WIP-drivers-meson-vdec-add-HEVC-decode-codec.patch'
+	'1036-LE-AML-0036-WIP-drivers-meson-vdec-add-handling-to-HEVC-decoder-.patch'
+	'1037-LE-AML-0037-WIP-drivers-meson-vdec-add-HEVC-support-to-GXBB.patch'
+	'1038-LE-AML-0038-WIP-drivers-meson-vdec-check-if-parser-has-really-pa.patch'
+	'1039-LE-AML-0039-WIP-arm64-dts-meson-radxa-zero-add-support-for-the-u.patch'
+	'1040-LE-AML-0040-WIP-dt-bindings-arm-amlogic-add-support-for-Radxa-Ze.patch'
+	'1041-LE-AML-0041-WIP-arm64-dts-meson-add-support-for-Radxa-Zero2.patch'
+	'1042-LE-AML-0042-WIP-arm64-dts-meson-add-audio-playback-to-p201.patch'
+	'1043-LE-AML-0043-WIP-arm64-dts-meson-add-audio-playback-to-p200.patch'
+	'1044-LE-AML-0044-WIP-arm64-dts-meson-add-audio-playback-to-u200.patch'
+	'1045-LE-AML-0045-WIP-arm64-dts-meson-add-Headphone-output-to-Beelink-.patch'
+	'1046-LE-AML-0046-WIP-dt-bindings-arm-amlogic-add-support-for-the-Tani.patch'
+	'1047-LE-AML-0047-WIP-arm64-dts-meson-add-support-for-the-Tanix-TX5-Ma.patch'
+	'1048-LE-AML-0048-WIP-arm64-dts-meson-add-multiple-MeCool-device-trees.patch'
+	'1049-LE-AML-0049-WIP-dt-bindings-arm-amlogic-add-support-for-Minix-NE.patch'
+	'1050-LE-AML-0050-WIP-arm64-dts-meson-add-initial-device-tree-for-Mini.patch'
+	'1051-LE-AML-0051-LOCAL-arm64-dts-meson-add-rtc-vrtc-aliases-to-Minix-.patch'
+	'1052-LE-AML-0052-WIP-media-rc-add-keymap-for-Beelink-Mini-MXIII-remot.patch'
+	'1053-LE-AML-0053-WIP-dt-bindings-arm-amlogic-add-support-for-Beelink-.patch'
+	'1054-LE-AML-0054-WIP-arm64-dts-meson-add-support-for-Beelink-Mini-MXI.patch'
+	'1055-LE-AML-0055-WIP-media-rc-add-keymap-for-MeCool-M8S-Pro-W-remote.patch'
+	'1056-LE-AML-0056-WIP-dt-bindings-arm-amlogic-add-support-for-MeCool-M.patch'
+	'1057-LE-AML-0057-WIP-arm64-dts-meson-add-support-for-MeCool-M8S-Pro-W.patch'
+	'1058-LE-AML-0058-WIP-dt-bindings-arm-amlogic-add-Vero-4K-binding.patch'
+	'1059-LE-AML-0059-WIP-arm64-dts-meson-add-support-for-OSMC-Vero-4K.patch'
+	'1060-LE-AML-0060-WIP-arm64-dts-meson-add-RTL8822CS-bluetooth-to-X96-A.patch'
+	'1061-LE-AML-0061-WIP-media-rc-add-keymap-for-Venz-V10-remote.patch'
+	'1062-LE-AML-0062-WIP-dt-bindings-arm-amlogic-add-S905L-and-Venz-V10-b.patch'
+	'1063-LE-AML-0063-WIP-arm64-dts-meson-add-support-for-Venz-V10.patch'
+	'1064-LE-AML-0064-WIP-dt-bindings-vendor-prefixes-add-tbee-prefix.patch'
+	'1065-LE-AML-0065-WIP-dt-bindings-arm-amlogic-add-TBee-Box-binding.patch'
+	'1066-LE-AML-0066-WIP-arm64-dts-meson-add-support-for-TBee-Box.patch'
+	'1067-LE-AML-0067-WIP-dt-bindings-arm-amlogic-add-Beelink-GT1-binding.patch'
+	'1068-LE-AML-0068-WIP-arm64-dts-meson-add-support-for-Beelink-GT1.patch'
+	'1069-LE-AML-0069-WIP-arm64-dts-meson-add-vcc_5v-regulator-to-WeTek-dt.patch'
+	'1070-LE-AML-0070-WIP-arm64-dts-meson-add-audio-lineout-to-WeTek-Play2.patch'
+	'1071-LE-AML-0071-WIP-arm64-dts-amlogic-fix-cvbs-disable-on-WeTek-Hub.patch'
+	'1072-LE-AML-0072-WIP-ASoC-dt-bindings-add-compatible-for-es8323-i2c.patch'
+	'1073-LE-AML-0073-WIP-ASoC-codecs-add-support-for-ES8323.patch'
+	'2001-VIM3-hack-for-PCIe.patch'
+	'2002-VIM3-Change-fan-auto-control-temp-to-50-C.patch'                               	# Vim3 Fan control
+	'2004-add-ugoos-device.patch'								# Ugoos AM6
+	"2005-arm64-dts-gxkingx-gpio-fan1.patch::https://github.com/spikerguy/linux/commit/a2eef8635c0a9f3d831bcddb3368117981599e70.patch"	# GSKing X GPIO Fan
+	"2006-arm64-dts-gxkingx-gpio-fan2.patch::https://github.com/spikerguy/linux/commit/b5b067c1c6ad34c5d15729d2147781f6f14549ad.patch"	# GSKing X GPIO Fan
+	)
 
-md5sums=('f91bfe133d2cb1692f705947282e123a'
-         '89a5211f788791b511c149374d68c48f'
-         'e2745a8998b4be38f9c664668966561a'
+md5sums=('dede690733903e1ea5290010bb6e37c2'
+         '6495ef70fcbbad56fb92e4b24898477e'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
-         '0e28a6bf6c8b4e33f47acdde66847a62'
-         '9d467258b9775de03b9ddc11797ac67d'
-         'cf80d02a3d91e0d23c4a4d0e4801e16c'
-         'd3dda8af332f6b921fd10b7ba08fb062'
-         '18635585ff38cdaf73bc7a94ba7eebaf'
-         '14c1ff44d252e0a35ad0bf302035a321'
-         'e35270deb534fca477b237621bdba3e6'
-         '8d8471b38cd0e0a1dc4d7f9a9e0a292c'
-         'c8444872bf7670e72b1028265ea71185'
-         '78abeb86982c3a3aeb147d29dcc3ca83'
-         'bc513edabed56f544b4b78413e490422'
-         '693332564e06ec09086faf1a2e1b4f63'
-         '4e1546d1aba4b982d1683fc004df836e'
-         'b76c3b61ae29b2d5de6611b97d8c8a9b'
-         '6df6ab67320910f6cbc734eaae5be3e0'
-         'db8bc109ca76f3638819fe798dd2255e'
-         'a2d2527e668f705e662210db7a639ef1'
-         '6834be0b532afb3ff7bb48d47755d822'
-         '4747aef0e9a97aa37ca99efe147d0b35'
-         '183f9851253aa09774231cee7ce8abce'
-         '4d77455d6dd9257bc30a1c42e28dba90'
-         '64fe9f48e9fc47df224f219224e0eaf8'
-         'd2b695541e7927fa37cb349d121d4af7'
-         '5bbf0a070a47d5daf87795355fdf93be'
-         '00e9ccefe6dbb4ba6e7a3c8f10f99828'
-         '4e85f7840f906e3a8ff6a4e62516f64b'
-         '8fff17240ad0ca0335e65a584b130142'
+         '7911a1f7bb30c171461a24fc55e227f0'
+         'ceef8e36f98e45c3c7b9b8e7a37f89bf'
+         'c23c73706a4f563ed7e109cebf18fa37'
+         'cc008aa8bac19495524e40d3d5d3cb52'
+         '77d7346c47e7239c6d4cb435bd649205'
+         '2b61d704c4889b386db245cd3f5f577b'
+         'fad5d2408a86deb2c97ad270fcc0ffb6'
+         'f53826df7dd20ca39bff2c4fe3cf6bf9'
+         '8e3ea1084f953a3c08111e8a85325514'
+         '1ee37b910a2c4bb211923162cdd4ba63'
+         '15d92ebc7786d9c4e9886ad4690dc7cc'
+         'ae298a5acbc42bd2a14007acd5a1a1e0'
+         'ef74f88e746f7bea532a60c51483b4ce'
+         '56d187ac985681c04448904ba21df49d'
+         '36b7631011c803f51eab033b65ddc7f8'
+         'ed2a55eabc50aa99999e75d852379c20'
+         'd267d1e44b572cf46ec9b89a42be10c5'
+         '0ce21faba49c0228bcbbef987b7c8900'
+         'b76ef8dcc3b0be80c3f53ed3471d60c7'
+         '4559dacfc74128e738dff901d935b596'
+         '971e3f4a76543a8c7bdd31255b139e87'
+         '729ec74603e3e78ffcd039f10ba37455'
+         'a5f25338e5823d1dc56673f2585a2c30'
+         'aedf3af3e05218ca3516566e6cb4e31b'
+         '042e4154e827cf41e7bd8d9a6a502b0b'
+         'a37cbb488c3c79a48300ba2fa28d56e8'
+         '1bb896543bc36c3effa59152a6bb01a0'
+         '3425f66e533edd5f9b023737c52f8ad6'
+         '6b6405fd1f4d07c32515077bc5dd1ba1'
+         'c9d5142093be0b4a3bd0802354c76089'
+         'faec1a95ba6d592742e3e3244572f73b'
+         'ead7e1a51efbeb7f403815761772290d'
+         '2f7934bc35b629cd26a52d832354887f'
+         'f6220602ca5d6f42683dd3a2733aacbd'
+         '151cf7c9d9ef5a9e6281d59a1e456de2'
+         '488b9103b347bc2f159c713580f309da'
+         'd025ba6f149a34a0f4b7016c1d34af35'
+         'e487cdf7a5b19e4aaec2a52c31b99d5e'
+         '4528d85f7ea73a0964da1f1ac63af979'
+         '09c6cbdea1f4bf9c9e6c1e5a0d9f7656'
+         '62893a3f272cbe014225923d2d01bfc9'
+         '945ad25982cc36ff1a0886f050208970'
+         'd9baf1c284b184c7ffa4e02354447edd'
+         'c4e8b53bdce575c1755c57acf0be18ea'
+         '37af912b5618d474bb516650ac06bd0f'
+         'a2c54619d4a3cf539485173568554e19'
+         '9c91de23cbb2410aed7013d52fcc519e'
+         '5ddbe9a89432258c50f450c5a1abf2da'
+         'da1b8343854b284a3adca8c97aaa44a8'
+         '46595b251844dc4d93e2111e552ef140'
+         '8d2a17e265c6e83a2293a8f499127696'
+         'f60ae3ef9198b1a5332e1d7687995c3f'
+         'f2ba675d6efb586e7af9952116d17db7'
+         '6a8ce0fe5e554254e8935deaf64d256d'
+         '2d714a9dca1635f335275f7a9fb1ecec'
+         'a908f3b36150e5de69fdab1e433b3f0b'
+         '54105b20e250ee53fe5b7d640dfbf907'
+         '71ba06492d8307b637dad6e26f97b11e'
+         'd11f522d7aaa8b758e88a283784e8e16'
+         '5a2d6a9ccf6e0f4253376bd137318acd'
+         '2fb8764f74e1b1c3467bce15d63f4d67'
+         '78ade086c16417684a81e71c0a6f8052'
+         '760aa7152418d0fb39ee6c25ab3b9ec5'
+         'a4214020828ee3ae1eecc32fafaecfb6'
+         'b1c5ea329cace25c37e7de074d201360'
+         '26531cf1402792673b173e4a381ebcd6'
+         'b3b31cb6ed85bbfd768fd12ec6b06f77'
+         '971762dbea9d2812dbe39681a33a78e4'
+         '68e316dcbd16d5d2d106e24b76b81f59'
+         '61c46ad71ee982af109f8d9cc80d5886'
+         '2a061c7f8b6c66bb64a5b227619adf3c'
+         'b6d7d1abc37c542871c2580859e49753'
          'c78bf349331f51829913594d9d1fbe0a'
-         'dd2680f4cbf2024f48ed1bd637fcc952'
          'f4c97210987e7076a3442f3135a5f2bc'
-         'ada2ba969253b19f02377dcf78ce4f9f'
-         'ecd4c255fc699c499f62f74ee3b8a32b'
-         'a08826d49d32db75ec30aa8eae2c869f'
-         '05ffd1df2326dc7e4ccf483879e02720'
-         '04cc3a41b286779343c7fd0f06b78b13'
-         '2aefe2be17c2097ec5fabc6a6e6ad2f8'
-         'c0524f5ded54f98b5345e01b54d2795a'
-         '2325eec6a894a02f117e15520ddb1515'
-         '0a2c23dee0e70306b9384a4142b40025'
-         '279e608ccebb23c56d25a4909c505e2f'
-         'dba377b62ca9d129e46a11fd1bf6fe7c'
-         '5794ae1f3caecd85fac4f42a6892754e'
-         'e291b444d6c1d5b68494787a133fd95c'
-         '52029f8f2aee55e06200c9fcfa3b1492'
-         'b55c465906bbfc09b51062a27b3d885c'
-         'aacbc002fc5bbaa903c72b1fd1d44292'
-         'cdc74b27c6742a0c88592359045828ff'
-         'df7b3db97e601766d8280a685e12ccc4'
-         '2e16f477544723d4709f1f7b117e6ae9'
-         'da1ae27bf11081c277a8b504f5033297'
-         '0910789410d92d3ae21996a66f45f041'
          '1b92d7617e60d3c525a4b18ab4351185'
-         '469417b64e6a2bf65bd74c6d9cad2040'
-         '47ebd261e31fe881abafee88c9d33767'
-         '00e5055ecbdd583cab132d885f11a290'
-         '607269265296f7391f02d75e9076033e'
-         '8ea473f5a69781f37b0415ff3a728832'
-         'fcaa04a94040f734f8fd2347f1d28d3a'
-         '16101539fa994e9ac2adb51ff92776ae'
-         '8e5c7790d65a87606d2d34295d5a0a65'
          '5c50db3f0888d80ecc2be4351879b1f6'
-         'e4d32fa4336b46524597a3bbc715d272'
-         '9799998aa9b72fae2eb55e92d840dad5'
-         '2a971540beded13ca4c9bc0123ca563b'
-         'b5f364a62760483df0af20c7bf6ddb0d'
-         'd7f846f361d538be6ab2d7a2066774e2')
+         'e4d32fa4336b46524597a3bbc715d272')
 
 prepare() {
+  apply_patches() {
+      local PATCH
+      for PATCH in "${source[@]}"; do
+          PATCH="${PATCH%%::*}"
+          PATCH="${PATCH##*/}"
+          [[ ${PATCH} = $1*.patch ]] || continue
+          msg2 "Applying patch: ${PATCH}..."
+          patch -N -p1 < "../${PATCH}"
+      done
+  }
+
   cd ${_srcname}
 
-  # add upstream patch
-  patch -Np1 -i "${srcdir}/patch-${pkgver}"
 
-  # Khadas patches
-  patch -Np1 -i "${srcdir}/0001-HACK-set-meson-gx-cma-pool-to-896MB.patch"
-  patch -Np1 -i "${srcdir}/0002-HACK-set-meson-g12-cma-pool-to-896MB.patch"
-  #patch -Np1 -i "${srcdir}/0003-HACK-arm64-fix-Kodi-sysinfo-CPU-information.patch"
-  #patch -Np1 -i "${srcdir}/0004-HACK-arm64-dts-meson-gx-add-ATF-BL32-reserved-memory.patch"	#Creates Duplicate nodes
-  #patch -Np1 -i "${srcdir}/0005-HACK-arm64-meson-add-Amlogic-Meson-GX-PM-Suspend.patch"
-  #patch -Np1 -i "${srcdir}/0006-HACK-arm64-dts-meson-add-support-for-GX-PM-and-Virtu.patch"
-  #patch -Np1 -i "${srcdir}/0007-HACK-arm64-dts-meson-add-rtc-vrtc-aliases-to-Khadas-.patch"
-  #patch -Np1 -i "${srcdir}/0008-HACK-of-partial-revert-of-fdt.c-changes.patch"
-  patch -Np1 -i "${srcdir}/0014-WIP-mmc-meson-gx-mmc-set-core-clock-phase-to-270-deg.patch"
-  patch -Np1 -i "${srcdir}/0015-WIP-media-meson-vdec-remove-redundant-if-statement.patch"
-  patch -Np1 -i "${srcdir}/0016-WIP-drivers-meson-vdec-improve-mmu-and-fbc-handling-.patch"
-  patch -Np1 -i "${srcdir}/0017-WIP-drivers-meson-vdec-add-hevc-decode-codec.patch"
-  patch -Np1 -i "${srcdir}/0018-WIP-drivers-meson-vdec-add-handling-to-HEVC-decoder-.patch"
-  #patch -Np1 -i "${srcdir}/0019-WIP-ASoC-hdmi-codec-reorder-channel-allocation-list.patch"
-  #patch -Np1 -i "${srcdir}/0020-WIP-ASoC-meson-aiu-encoder-spdif-implement-the-.mute.patch"
-  #patch -Np1 -i "${srcdir}/0021-WIP-ASoC-meson-aiu-encoder-i2s-implement-the-.mute_s.patch"
-  #patch -Np1 -i "${srcdir}/0022-WIP-ALSA-pcm-fix-ELD-constraints-for-some-compressed.patch"
-  #patch -Np1 -i "${srcdir}/0023-WIP-ALSA-pcm-ignore-formats-not-supported-by-kodi-in.patch"
-  patch -Np1 -i "${srcdir}/0024-media-rc-add-common-keymap-for-Dreambox-RC10-and-RC2.patch"
-  #patch -Np1 -i "${srcdir}/0025-arm64-dts-meson-add-common-SM1-ac2xx-dtsi.patch"			# Applied in 5.18.1
-  #patch -Np1 -i "${srcdir}/0026-WIP-arm64-dts-meson-add-common-hdmi-hdmi-spdif-dtsi-.patch"
-  #patch -Np1 -i "${srcdir}/0027-WIP-arm64-dts-meson-add-common-hdmi-hdmi-spdif-dtsi-.patch"
-  #patch -Np1 -i "${srcdir}/0028-WIP-arm64-dts-meson-add-audio-playback-to-khadas-vim.patch"
-  patch -Np1 -i "${srcdir}/0029-rockchip_khadas_edge_add_missed_spiflash.patch"
-  patch -Np1 -i "${srcdir}/0030-rockchip_khadas_edge_add_ir_recv.patch"
-  patch -Np1 -i "${srcdir}/0031-arm64-dts-VIM3-VIM3L-fix-memory-size-for-vendor-u-bo.patch"
-  patch -Np1 -i "${srcdir}/0032-arm64-dts-VIM2-fix-broken-ethernet-interface-up-down.patch"
-  patch -Np1 -i "${srcdir}/0033-VIM3-hack-for-PCIe.patch"
-  patch -Np1 -i "${srcdir}/0034-ETH-setup-mac-address-from-command-line.patch"
-  patch -Np1 -i "${srcdir}/0035-VIM3-Change-fan-auto-control-temp-to-50-C.patch"
-  #patch -Np1 -i "${srcdir}/0037-Revert-builddeb-Fix-rootless-build-in-setuid-setgid-.patch"
-  #patch -Np1 -i "${srcdir}/0038-Revert-builddeb-Enable-rootless-builds.patch"
-  #patch -Np1 -i "${srcdir}/0039-packaging-5.x-with-postinstall-scripts.patch"
-  #patch -Np1 -i "${srcdir}/0040-builddeb-update-dtb-file-for-SD-images.patch"
-  #patch -Np1 -i "${srcdir}/0041-Add-text_offset.patch"
-  patch -Np1 -i "${srcdir}/0042-VIMs-add-gpiomem-support.patch"
-  #patch -Np1 -i "${srcdir}/0043-add-device-model-to-proc-cpuinfo.patch"
-  patch -Np1 -i "${srcdir}/0045-arm64-dts-VIM3-3L-add-serial-aliases.patch"
-  patch -Np1 -i "${srcdir}/0046-arm64-dts-VIM1-update-serial-aliases.patch"
-  patch -Np1 -i "${srcdir}/0047-arm64-dts-VIM2-update-serial-aliases.patch"
-  patch -Np1 -i "${srcdir}/0048-arm64-dts-VIM3-3L-add-i2c-aliases.patch"
-  patch -Np1 -i "${srcdir}/0049-VIM1-2-add-i2c-aliases.patch"
-  patch -Np1 -i "${srcdir}/0051-arm64-dts-VIM3L-add-npu-node.patch"
-  patch -Np1 -i "${srcdir}/0052-arm64-dts-VIM3-add-npu-node.patch"
-  #patch -Np1 -i "${srcdir}/0058-watchdog-meson_gxbb_wdt-remove-stop_on_reboot.patch"
-  #patch -Np1 -i "${srcdir}/0059-arm64-dts-meson-sm1-khadas-vim3l-use-one-sound-node-.patch"
-  patch -Np1 -i "${srcdir}/0060-arm64-dts-meson-add-spdif-out-to-khadas-vim.patch"
-  patch -Np1 -i "${srcdir}/0061-arm64-dts-meson-add-spdif-out-to-khadas-vim2.patch"
-  #patch -Np1 -i "${srcdir}/0062-arm64-dts-meson-sm1-add-spdifin-spdifout-nodes.patch"
-  #patch -Np1 -i "${srcdir}/0063-arm64-dts-meson-khadas-vim3-remake-simple-sound-for-.patch"
-  patch -Np1 -i "${srcdir}/0064-arm64-dts-meson-add-initial-Beelink-GT1-Ultimate-dev.patch"
-  patch -Np1 -i "${srcdir}/0065-add-ugoos-device.patch"
-  patch -Np1 -i "${srcdir}/0067-drm-meson-encoder-add-YUV422-output-support.patch"
-  patch -Np1 -i "${srcdir}/v1-0001-PCI-add-PCIe-Max-Read-Request-Size.patch"
-  patch -Np1 -i "${srcdir}/v1-0002-PCI-DWC-meson-setup-512-PCIe-Max-Read-Request-Siz.patch"
-  #patch -Np1 -i "${srcdir}/v2-0001-arm64-dts-rockchip-remove-mmc-hs400-enhanced-stro.patch" 	#Already applied on 5.15.11
-  #patch -Np1 -i "${srcdir}/v4-0001-of-add-Overlay-ConfigFS-interface.patch"
-  patch -Np1 -i "${srcdir}/a2eef8635c0a9f3d831bcddb3368117981599e70.patch"			#Add GPIO Fan control GS King X
-  patch -Np1 -i "${srcdir}/b5b067c1c6ad34c5d15729d2147781f6f14549ad.patch" 			#GPIO Fan to only use single cooling map
-  patch -Np1 -i "${srcdir}/0001-arm64-dts-meson-radxa-zero-add-support-for-the-usb-t.patch"	# USB-C Support for Zero
-  patch -Np1 -i "${srcdir}/0002-pinctrl-meson-Add-several-missing-pinmux-for-pwm-fun.patch"	# Pinmux for Zero2
-  patch -Np1 -i "${srcdir}/0003-dt-bindings-arm-amlogic-add-support-for-Radxa-Zero2.patch"
-  patch -Np1 -i "${srcdir}/0004-arm64-dts-meson-add-support-for-Radxa-Zero2.patch"		# Add Zero2 support
+  # Assorted LE ARM patches
+  apply_patches 1
+
+  # Assorted Manjaro ARM patches
+  apply_patches 2
+  
+  # Assorted patches
+  #  apply_patches 3
+
   
   cat "${srcdir}/config" > ./.config
 
@@ -236,8 +214,8 @@ prepare() {
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
-  #make menuconfig
-  #cp ./.config "${srcdir}/config"
+  # make menuconfig
+  # cp ./.config "${srcdir}/config"
 
 }
 

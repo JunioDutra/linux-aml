@@ -1,0 +1,27 @@
+From b5b067c1c6ad34c5d15729d2147781f6f14549ad Mon Sep 17 00:00:00 2001
+From: spikerguy <48839029+spikerguy@users.noreply.github.com>
+Date: Sun, 15 May 2022 22:49:26 +0300
+Subject: [PATCH] arm64: dts: amlogic: gsking-x  use only single colling map
+
+---
+ arch/arm64/boot/dts/amlogic/meson-g12b-gsking-x.dts | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/amlogic/meson-g12b-gsking-x.dts b/arch/arm64/boot/dts/amlogic/meson-g12b-gsking-x.dts
+index 546ebf9fe29497..7b2865b675cabe 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-g12b-gsking-x.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-g12b-gsking-x.dts
+@@ -151,12 +151,7 @@
+         };
+ 
+         cooling-maps {
+-            map0 {
+-                trip = <&cpu_active>;
+-                cooling-device = <&gpio_fan THERMAL_NO_LIMIT 1>;
+-            };
+-
+-            map1 {
++            map {
+                 trip = <&cpu_active>;
+                 cooling-device = <&gpio_fan 1 THERMAL_NO_LIMIT>;
+             };

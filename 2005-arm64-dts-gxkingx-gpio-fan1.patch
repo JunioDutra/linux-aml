@@ -1,0 +1,59 @@
+From a2eef8635c0a9f3d831bcddb3368117981599e70 Mon Sep 17 00:00:00 2001
+From: spikerguy <48839029+spikerguy@users.noreply.github.com>
+Date: Sat, 14 May 2022 17:46:36 +0300
+Subject: [PATCH] arm64: dts: amlogic: gsking-x: add gpio fan control
+
+GS King X have a fan which is controlled by GPIO and by default it is always on.
+Using this patch the fan will stay off until temp reaches the trips temp.
+
+Signed-off-by: Furkan Kardame <f.kardame@manjaro.org>
+---
+ .../boot/dts/amlogic/meson-g12b-gsking-x.dts  | 31 +++++++++++++++++++
+ 1 file changed, 31 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/amlogic/meson-g12b-gsking-x.dts b/arch/arm64/boot/dts/amlogic/meson-g12b-gsking-x.dts
+index 6c7bfacbad78ea..546ebf9fe29497 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-g12b-gsking-x.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-g12b-gsking-x.dts
+@@ -19,6 +19,15 @@
+ 		rtc0 = &rtc;
+ 		rtc1 = &vrtc;
+ 	};
++	
++	gpio_fan: gpio-fan {
++		compatible = "gpio-fan";
++		gpios = <&gpio GPIOH_5 GPIO_ACTIVE_HIGH>;
++		/* Using Dummy Speed */
++		gpio-fan,speed-map = <0 0
++		                      1 1>;
++		#cooling-cells = <2>;
++		};
+ 
+ 	gpio-keys-polled {
+ 		compatible = "gpio-keys-polled";
+@@ -131,3 +140,25 @@
+ &tohdmitx {
+ 	status = "okay";
+ };
++
++&cpu_thermal {
++        trips {
++                cpu_active: cpu-active {
++                        temperature = <60000>; /* millicelsius */
++                        hysteresis = <2000>; /* millicelsius */
++                        type = "active";
++                };
++        };
++
++        cooling-maps {
++            map0 {
++                trip = <&cpu_active>;
++                cooling-device = <&gpio_fan THERMAL_NO_LIMIT 1>;
++            };
++
++            map1 {
++                trip = <&cpu_active>;
++                cooling-device = <&gpio_fan 1 THERMAL_NO_LIMIT>;
++            };
++        };
++};
