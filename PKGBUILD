@@ -4,7 +4,7 @@
 pkgbase=linux-aml
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=6.0.11
+pkgver=6.0.12
 pkgrel=1
 _srcname="linux-${pkgver/%.0/}"
 arch=('aarch64')
@@ -43,7 +43,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
 	'1022-LE-AML-0022-FROMLIST-v5-MAINTAINERS-Add-entry-for-tm1628-auxdisp.patch'
 	'1023-LE-AML-0023-FROMLIST-v1-drm-bridge-dw_hdmi-fix-preference-of-RGB.patch'
 	'1024-LE-AML-0024-WIP-ASoC-hdmi-codec-reorder-channel-allocation-list.patch'
-	'1025-LE-AML-0025-WIP-mmc-meson-gx-mmc-set-core-clock-phase-to-270-deg.patch'
+	#'1025-LE-AML-0025-WIP-mmc-meson-gx-mmc-set-core-clock-phase-to-270-deg.patch'
 	'1026-LE-AML-0026-WIP-arm64-dts-meson-add-Broadcom-WiFi-to-P212-dtsi.patch'
 	'1027-LE-AML-0027-WIP-arm64-dts-meson-move-pwm_ef-node-in-P212-dtsi.patch'
 	'1028-LE-AML-0028-WIP-arm64-dts-meson-remove-WiFi-BT-nodes-from-Khadas.patch'
@@ -99,8 +99,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
 	"2006-arm64-dts-gxkingx-gpio-fan2.patch::https://github.com/spikerguy/linux/commit/b5b067c1c6ad34c5d15729d2147781f6f14549ad.patch"	# GSKing X GPIO Fan
 	)
 
-md5sums=('7a47796e842b77519613abbca6037c91'
-         '6495ef70fcbbad56fb92e4b24898477e'
+md5sums=('44933812ad926f5000f01ac108d41ee8'
+         'b026a28059a53a3212726f874e1acaea'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
@@ -127,7 +127,6 @@ md5sums=('7a47796e842b77519613abbca6037c91'
          '971e3f4a76543a8c7bdd31255b139e87'
          '729ec74603e3e78ffcd039f10ba37455'
          'a5f25338e5823d1dc56673f2585a2c30'
-         'aedf3af3e05218ca3516566e6cb4e31b'
          '042e4154e827cf41e7bd8d9a6a502b0b'
          'a37cbb488c3c79a48300ba2fa28d56e8'
          '1bb896543bc36c3effa59152a6bb01a0'
