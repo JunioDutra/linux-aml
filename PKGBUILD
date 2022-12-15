@@ -98,7 +98,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
 	#'2004-add-ugoos-device.patch'								# Ugoos AM6
 	"2005-arm64-dts-gxkingx-gpio-fan1.patch::https://github.com/spikerguy/linux/commit/a2eef8635c0a9f3d831bcddb3368117981599e70.patch"	# GSKing X GPIO Fan
 	"2006-arm64-dts-gxkingx-gpio-fan2.patch::https://github.com/spikerguy/linux/commit/b5b067c1c6ad34c5d15729d2147781f6f14549ad.patch"	# GSKing X GPIO Fan
-	)
+	'2007-arm64-dts-s922x-rev-c.patch::https://github.com/chewitt/linux/commit/c39930d3878e5bdee93a9fdc4de65476555abb79.patch'
+	'2008-arm64-dts-s922x-n2+.patch::https://github.com/chewitt/linux/commit/7bb862493b3c7a9d0b77bbd63a6ff442e4f00680.patch')
 
 md5sums=('8086b603b68a8c83b85a33aab953d466'
          'b026a28059a53a3212726f874e1acaea'
@@ -179,7 +180,9 @@ md5sums=('8086b603b68a8c83b85a33aab953d466'
          'f4c97210987e7076a3442f3135a5f2bc'
          '7c5fb50dc2b7feb07e16cb87e76376ae'
          '5c50db3f0888d80ecc2be4351879b1f6'
-         'e4d32fa4336b46524597a3bbc715d272')
+         'e4d32fa4336b46524597a3bbc715d272'
+         '7e9cdc45cd523031e3bab8e1d6ebad87'
+         '3eb8adaad044f54a1ca3e79022c1bafe')
 
 prepare() {
   apply_patches() {
