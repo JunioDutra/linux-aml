@@ -4,7 +4,7 @@
 pkgbase=linux-aml
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=6.0.12
+pkgver=6.0.13
 pkgrel=1
 _srcname="linux-${pkgver/%.0/}"
 arch=('aarch64')
@@ -94,12 +94,13 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
 	'1073-LE-AML-0073-WIP-ASoC-codecs-add-support-for-ES8323.patch'
 	'2001-VIM3-hack-for-PCIe.patch'
 	'2002-VIM3-Change-fan-auto-control-temp-to-50-C.patch'                               	# Vim3 Fan control
-	'2004-add-ugoos-device.patch'								# Ugoos AM6
+	'2004-add-ugoos-upstream.patch::https://github.com/chewitt/linux/commit/ec97dc8fe2e5405da38e1ffc49443a79069719ac.patch'
+	#'2004-add-ugoos-device.patch'								# Ugoos AM6
 	"2005-arm64-dts-gxkingx-gpio-fan1.patch::https://github.com/spikerguy/linux/commit/a2eef8635c0a9f3d831bcddb3368117981599e70.patch"	# GSKing X GPIO Fan
 	"2006-arm64-dts-gxkingx-gpio-fan2.patch::https://github.com/spikerguy/linux/commit/b5b067c1c6ad34c5d15729d2147781f6f14549ad.patch"	# GSKing X GPIO Fan
 	)
 
-md5sums=('44933812ad926f5000f01ac108d41ee8'
+md5sums=('8086b603b68a8c83b85a33aab953d466'
          'b026a28059a53a3212726f874e1acaea'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
@@ -177,7 +178,7 @@ md5sums=('44933812ad926f5000f01ac108d41ee8'
          'b6d7d1abc37c542871c2580859e49753'
          'c78bf349331f51829913594d9d1fbe0a'
          'f4c97210987e7076a3442f3135a5f2bc'
-         '1b92d7617e60d3c525a4b18ab4351185'
+         '7c5fb50dc2b7feb07e16cb87e76376ae'
          '5c50db3f0888d80ecc2be4351879b1f6'
          'e4d32fa4336b46524597a3bbc715d272')
 
