@@ -4,7 +4,7 @@
 pkgbase=linux-aml
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=6.0.17
+pkgver=6.1.5
 pkgrel=1
 _srcname="linux-${pkgver/%.0/}"
 arch=('aarch64')
@@ -31,8 +31,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
 	'1009-LE-AML-0009-LOCAL-ALSA-Assign-internal-PCM-chmap-ELD-IEC958-kctl.patch'
 	'1010-LE-AML-0010-LOCAL-usb-hub-disable-autosuspend-for-Genesys-Logic-.patch'
 	'1011-LE-AML-0011-LOCAL-of-partial-revert-of-fdt.c-changes.patch'
-	'1013-LE-AML-0013-FROMGIT-6.1-dt-bindings-arm-amlogic-add-Beelink-GT1-.patch'
-	'1014-LE-AML-0014-FROMGIT-6.1-arm64-dts-meson-add-support-for-Beelink-.patch'
+	#'1013-LE-AML-0013-FROMGIT-6.1-dt-bindings-arm-amlogic-add-Beelink-GT1-.patch'
+	#'1014-LE-AML-0014-FROMGIT-6.1-arm64-dts-meson-add-support-for-Beelink-.patch'
 	'1015-LE-AML-0015-FROMLIST-v2-arm64-dts-meson-make-dts-use-gpio-fan-ma.patch'
 	'1016-LE-AML-0016-FROMLIST-v1-mmc-meson-gx-fix-deferred-probing.patch'
 	'1017-LE-AML-0017-FROMLIST-v5-dt-bindings-vendor-prefixes-Add-Titan-Mi.patch'
@@ -99,8 +99,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
 	"2005-arm64-dts-gxkingx-gpio-fan1.patch::https://github.com/spikerguy/linux/commit/a2eef8635c0a9f3d831bcddb3368117981599e70.patch"	# GSKing X GPIO Fan
 	"2006-arm64-dts-gxkingx-gpio-fan2.patch::https://github.com/spikerguy/linux/commit/b5b067c1c6ad34c5d15729d2147781f6f14549ad.patch"	# GSKing X GPIO Fan
 )
-md5sums=('98d5544a9024a54b13ce5082f164fc3c'
-         'a8784a984c17bad0e14ab6d3b86cca11'
+md5sums=('8e954f890f32917863ebf1fe159f1ae5'
+         '74e0b7f3556340374c2dd319c914b7c4'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '3dc88030a8f2f5a5f97266d99b149f77'
@@ -115,8 +115,6 @@ md5sums=('98d5544a9024a54b13ce5082f164fc3c'
          '8e3ea1084f953a3c08111e8a85325514'
          '1ee37b910a2c4bb211923162cdd4ba63'
          '15d92ebc7786d9c4e9886ad4690dc7cc'
-         'ae298a5acbc42bd2a14007acd5a1a1e0'
-         'ef74f88e746f7bea532a60c51483b4ce'
          '56d187ac985681c04448904ba21df49d'
          '36b7631011c803f51eab033b65ddc7f8'
          'ed2a55eabc50aa99999e75d852379c20'
