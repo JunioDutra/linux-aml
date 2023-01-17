@@ -4,8 +4,8 @@
 pkgbase=linux-aml
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=6.1.5
-pkgrel=2
+pkgver=6.1.6
+pkgrel=1
 _srcname="linux-${pkgver/%.0/}"
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -98,8 +98,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
 	#'2004-add-ugoos-device.patch'								# Ugoos AM6
 	"2005-arm64-dts-gxkingx-gpio-fan1.patch::https://github.com/spikerguy/linux/commit/a2eef8635c0a9f3d831bcddb3368117981599e70.patch"	# GSKing X GPIO Fan
 	"2006-arm64-dts-gxkingx-gpio-fan2.patch::https://github.com/spikerguy/linux/commit/b5b067c1c6ad34c5d15729d2147781f6f14549ad.patch"	# GSKing X GPIO Fan
-)
-md5sums=('8e954f890f32917863ebf1fe159f1ae5'
+	"2007-arm64-dts-amlogic-add-g1-tiny-pc-s905x3-support.patch")
+md5sums=('7b48ffc829a3cdc40000ca00eac2cad6'
          '0f69cde39ddc7d21a863f812a4df1325'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
@@ -176,7 +176,8 @@ md5sums=('8e954f890f32917863ebf1fe159f1ae5'
          'f4c97210987e7076a3442f3135a5f2bc'
          '5ed46be5fe1bca49836b8523153bb248'
          '5c50db3f0888d80ecc2be4351879b1f6'
-         'e4d32fa4336b46524597a3bbc715d272')
+         'e4d32fa4336b46524597a3bbc715d272'
+         '39b36ff5c1b7e687adc5932bd4f48035')
 
 prepare() {
   apply_patches() {
