@@ -31,7 +31,7 @@ new file mode 100644
 index 000000000..1397154d7
 --- /dev/null
 +++ b/arch/arm64/boot/dts/amlogic/meson-sm1-g1-tpc.dts
-@@ -0,0 +1,571 @@
+@@ -0,0 +1,553 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
 + * Copyright (c) 2019 BayLibre SAS. All rights reserved.
@@ -54,20 +54,10 @@ index 000000000..1397154d7
 +		ethernet0 = &ethmac;
 +	};
 +
-+	mono_dac: audio-codec-0 {
-+//		compatible = "maxim,max98357a";
-+		#sound-dai-cells = <0>;
-+		sound-name-prefix = "U16";
-+		sdmode-gpios = <&gpio_ao GPIOAO_2 GPIO_ACTIVE_HIGH>;
-+	};
-+
-+	dmics: audio-codec-1 {
-+		#sound-dai-cells = <0>;
-+		compatible = "dmic-codec";
-+		num-channels = <2>;
-+		wakeup-delay-ms = <50>;
-+		status = "okay";
-+		sound-name-prefix = "MIC";
++	au2: analog-amplifier {
++		compatible = "simple-audio-amplifier";
++		sound-name-prefix = "AU2";
++		enable-gpios = <&gpio GPIOH_5 GPIO_ACTIVE_LOW>;
 +	};
 +
 +	chosen {
@@ -276,10 +266,6 @@ index 000000000..1397154d7
 +			dai-tdm-slot-tx-mask-0 = <1 1>;
 +			mclk-fs = <256>;
 +
-+			codec-0 {
-+				sound-dai = <&mono_dac>;
-+			};
-+
 +			codec-1 {
 +				sound-dai = <&tohdmitx TOHDMITX_I2S_IN_A>;
 +			};
@@ -303,10 +289,6 @@ index 000000000..1397154d7
 +		/* internal digital mics */
 +		dai-link-8 {
 +			sound-dai = <&pdm>;
-+
-+			codec {
-+				sound-dai = <&dmics>;
-+			};
 +		};
 +
 +		/* hdmi glue */

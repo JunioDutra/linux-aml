@@ -5,7 +5,7 @@ pkgbase=linux-aml
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
 pkgver=6.1.7
-pkgrel=1
+pkgrel=2
 _srcname="linux-${pkgver/%.0/}"
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -179,7 +179,7 @@ md5sums=('657681c0610cb314b2be1256a88b2e54'
          '5ed46be5fe1bca49836b8523153bb248'
          '5c50db3f0888d80ecc2be4351879b1f6'
          'e4d32fa4336b46524597a3bbc715d272'
-         '39b36ff5c1b7e687adc5932bd4f48035')
+         'fb4979a32301f8dd1cc4ebdffd31cd10')
 
 prepare() {
   apply_patches() {
