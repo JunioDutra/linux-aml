@@ -5,7 +5,7 @@ pkgbase=linux-aml
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
 pkgver=6.1.11
-pkgrel=1
+pkgrel=2
 _srcname="linux-${pkgver/%.0/}"
 arch=('aarch64')
 url="http://www.kernel.org/"
@@ -31,9 +31,10 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
 	'1009-LE-AML-0009-LOCAL-ALSA-Assign-internal-PCM-chmap-ELD-IEC958-kctl.patch'
 	'1010-LE-AML-0010-LOCAL-usb-hub-disable-autosuspend-for-Genesys-Logic-.patch'
 	'1011-LE-AML-0011-LOCAL-of-partial-revert-of-fdt.c-changes.patch'
+	'1010-arm64-dts-amlogic-Make-mmc-host-controller-interrupts-level-sensitive.patch'
 	#'1013-LE-AML-0013-FROMGIT-6.1-dt-bindings-arm-amlogic-add-Beelink-GT1-.patch'
 	#'1014-LE-AML-0014-FROMGIT-6.1-arm64-dts-meson-add-support-for-Beelink-.patch'
-	'1014-Revert-mmc-meson-gx-add-SDIO-interrupt-support.patch'
+	#'1014-Revert-mmc-meson-gx-add-SDIO-interrupt-support.patch'
 	'1015-LE-AML-0015-FROMLIST-v2-arm64-dts-meson-make-dts-use-gpio-fan-ma.patch'
 	'1016-LE-AML-0016-FROMLIST-v1-mmc-meson-gx-fix-deferred-probing.patch'
 	'1017-LE-AML-0017-FROMLIST-v5-dt-bindings-vendor-prefixes-Add-Titan-Mi.patch'
@@ -116,7 +117,7 @@ md5sums=('f91621912cd58ac6d4128d4057980e7d'
          '8e3ea1084f953a3c08111e8a85325514'
          '25245a7617e514b6dd73cbd6a30c37a6'
          '15d92ebc7786d9c4e9886ad4690dc7cc'
-         'f91b305c9cf0bf98a3a5bacb8364e049'
+         '1709dc0f0622ee378dc7a9bcf0683cb3'
          '56d187ac985681c04448904ba21df49d'
          '36b7631011c803f51eab033b65ddc7f8'
          'ed2a55eabc50aa99999e75d852379c20'
