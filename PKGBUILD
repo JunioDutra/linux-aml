@@ -4,7 +4,7 @@
 pkgbase=linux-aml
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=6.1.35
+pkgver=6.1.38
 pkgrel=1
 _srcname="linux-${pkgver/%.0/}"
 arch=('aarch64')
@@ -35,7 +35,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
 	#'1014-LE-AML-0014-FROMGIT-6.1-arm64-dts-meson-add-support-for-Beelink-.patch'
 	#'1014-Revert-mmc-meson-gx-add-SDIO-interrupt-support.patch'
 	'1015-LE-AML-0015-FROMLIST-v2-arm64-dts-meson-make-dts-use-gpio-fan-ma.patch'
-	'1016-LE-AML-0016-FROMLIST-v1-mmc-meson-gx-fix-deferred-probing.patch'
+	#'1016-LE-AML-0016-FROMLIST-v1-mmc-meson-gx-fix-deferred-probing.patch'		#Applied in 6.1.38
 	'1017-LE-AML-0017-FROMLIST-v5-dt-bindings-vendor-prefixes-Add-Titan-Mi.patch'
 	'1018-LE-AML-0018-FROMLIST-v5-dt-bindings-auxdisplay-Add-Titan-Micro-E.patch'
 	'1019-LE-AML-0019-FROMLIST-v5-docs-ABI-document-tm1628-attribute-displ.patch'
@@ -99,8 +99,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
 	#'2004-add-ugoos-device.patch'								# Ugoos AM6
 	"2005-arm64-dts-gxkingx-gpio-fan1.patch::https://github.com/spikerguy/linux/commit/a2eef8635c0a9f3d831bcddb3368117981599e70.patch"	# GSKing X GPIO Fan
 	"2006-arm64-dts-gxkingx-gpio-fan2.patch::https://github.com/spikerguy/linux/commit/b5b067c1c6ad34c5d15729d2147781f6f14549ad.patch"	# GSKing X GPIO Fan
-	"2007-arm64-dts-amlogic-add-g1-tiny-pc-s905x3-support.patch")
-md5sums=('107312a6caee19937cdfd7e63b7539a8'
+	)
+md5sums=('4cd95963f1ea8068565dfb25a6719583'
          '7170dedc9c87229ada0024e689ded642'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
@@ -117,7 +117,6 @@ md5sums=('107312a6caee19937cdfd7e63b7539a8'
          '25245a7617e514b6dd73cbd6a30c37a6'
          '15d92ebc7786d9c4e9886ad4690dc7cc'
          '56d187ac985681c04448904ba21df49d'
-         '36b7631011c803f51eab033b65ddc7f8'
          'ed2a55eabc50aa99999e75d852379c20'
          'd267d1e44b572cf46ec9b89a42be10c5'
          '0ce21faba49c0228bcbbef987b7c8900'
@@ -177,8 +176,7 @@ md5sums=('107312a6caee19937cdfd7e63b7539a8'
          'f4c97210987e7076a3442f3135a5f2bc'
          '5ed46be5fe1bca49836b8523153bb248'
          '5c50db3f0888d80ecc2be4351879b1f6'
-         'e4d32fa4336b46524597a3bbc715d272'
-         'fb4979a32301f8dd1cc4ebdffd31cd10')
+         'e4d32fa4336b46524597a3bbc715d272')
 
 prepare() {
   apply_patches() {
