@@ -4,7 +4,7 @@
 pkgbase=linux-aml
 _kernelname=${pkgbase#linux}
 _desc="AArch64 multi-platform"
-pkgver=6.1.61
+pkgver=6.1.79
 pkgrel=1
 _srcname="linux-${pkgver/%.0/}"
 arch=('aarch64')
@@ -99,7 +99,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/${_srcname}.tar.xz"
 	"2005-arm64-dts-gxkingx-gpio-fan1.patch::https://github.com/spikerguy/linux/commit/a2eef8635c0a9f3d831bcddb3368117981599e70.patch"	# GSKing X GPIO Fan
 	"2006-arm64-dts-gxkingx-gpio-fan2.patch::https://github.com/spikerguy/linux/commit/b5b067c1c6ad34c5d15729d2147781f6f14549ad.patch"	# GSKing X GPIO Fan
 	)
-md5sums=('342c5aecaa9bc0f098ad192bdc901814'
+md5sums=('b532906879863c57394f34f9821d3869'
          'a4bec676c3ab5d9fe4e58b5ea3e40cf8'
          '86d4a35722b5410e3b29fc92dae15d4b'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
